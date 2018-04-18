@@ -1,6 +1,7 @@
 import os
 import sys
 import subprocess
+from threading import Timer
 from random import randint
 from make_dungeons import (dungeon01, dungeon05, dungeon09, dungeon13,
                            dungeon02, dungeon06, dungeon10, dungeon14,
@@ -35,9 +36,7 @@ waits = [wait1, wait2, wait3]
 current_room = room11
 
 
-#@when('take yoshua')
 def yoshua_minigame():
-    obj = current_room.items.take('yoshua')
     say('''In the far corner of the cavernous room, you spy Yoshua
         Better-than-you, First Lord and High Wizard of Mila.''')
     say('''He stands trembling, his arms spread out and his eyes fixed to the
@@ -63,18 +62,15 @@ def yoshua_minigame():
             say('You tie.')
         elif roll == 2:
             say('You win!')
-        bag.add(obj)
-        return
+        return True
     else:
         print('')
         say('''You leave him alone. Yoshua continues to stand, enraptured and
             trembling.''')
-        return
+        return False
 
 
-#@when('take yann')
 def yann_minigame():
-    obj = current_room.items.take('yann')
     say('''Atop a reeking pile of garbage and linear algebra sits Yann Raccoon
         the Famished, scavenging for his next dinner, or next publishable
         theorem.''')
@@ -89,17 +85,14 @@ def yann_minigame():
             despises the fact that he needs to rummage to find his meals.''')
         say('''As a gesture of gratitude and goodwill, he offers you a strange
             clockwork mechanism that he found in the pile.''')
-        bag.add(obj)
-        return
+        return True
     else:
         say('''You walk away in disgust. Yann continues his incessant
             scrouging.''')
-        return
+        return False
 
 
-#@when('take geoffrey')
 def geoffrey_minigame():
-    obj = current_room.items.take('geoffrey')
     say('''Geoffrey Pinch-one the Miserly huddles over his treasure chest.''')
     say('''As you approach, he sniffs and snorts in indignant surprise, as if
         you had interrupted something.''')
@@ -123,19 +116,24 @@ def geoffrey_minigame():
         ans = input('')
         print(s)
         print('')
+
+        timeout = 5
+        t = Timer(timeout, print, ['\n\nTimes up!'])
+        t.start()
         ans = input('Quick! Reproduce the inscription! ')
+        t.cancel()
+
         if ans == s:
             say('The treasure chest clicks open.')
-            bag.add(obj)
-            return
+            return True
         else:
             say('''You are unsuccessful. Geoffrey creeches in gleeful joy.''')
-            return
+            return False
     else:
         print('')
         say('''You decline. Geoffrey snorts in disdain, and continues to huddle
             over his chest.''')
-        return
+        return False
 
 
 @when('north', direction='north')
@@ -174,14 +172,23 @@ def go(direction):
 def take(item):
     obj = current_room.items.take(item)
     if obj.name == 'Yann':
-        yann_minigame()
-        print('asdf')
+        success = yann_minigame()
+        if success:
+            bag.add(obj)
+        else:
+            return
     elif obj.name == 'Yoshua':
-        yoshua_minigame()
-        print('asdf')
+        success = yoshua_minigame()
+        if success:
+            bag.add(obj)
+        else:
+            return
     elif obj.name == 'Geoffrey':
-        geoffrey_minigame()
-        print('asdf')
+        success = geoffrey_minigame()
+        if success:
+            bag.add(obj)
+        else:
+            return
 
     if obj:
         say('You pick up the %s.' % obj)
