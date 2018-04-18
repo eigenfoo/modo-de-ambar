@@ -1,11 +1,24 @@
-from random import shuffle
+from random import shuffle, sample
 from adventurelib import (when, start, Room, Item, Bag,
                           say, set_context, get_context)
-
 
 COLORS = ['green', 'red', 'blue', 'purple',
           'orange', 'white', 'yellow', 'black']
 
+ITEMS = ['spare tires', 'scroll', 'treasure chest']
+
+def dungeon_factory(dungeon_func):
+    *rooms, wait, exit_dir = dungeon_func()
+
+    items = [ITEMS[i]
+             for i in sorted(sample(range(len(ITEMS)), 4))]
+
+    # mallet = Item('rusty mallet', 'mallet')
+    # valley.items = Bag({mallet})
+    return rooms, wait, exit_dir
+
+
+@dungeon_factory
 def dungeon01():
     shuffle(COLORS)
 
@@ -50,6 +63,8 @@ def dungeon01():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon02():
     shuffle(COLORS)
 
@@ -94,6 +109,8 @@ def dungeon02():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon03():
     shuffle(COLORS)
 
@@ -138,6 +155,8 @@ def dungeon03():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon04():
     shuffle(COLORS)
 
@@ -182,6 +201,8 @@ def dungeon04():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon05():
     shuffle(COLORS)
 
@@ -226,6 +247,8 @@ def dungeon05():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon06():
     shuffle(COLORS)
 
@@ -270,6 +293,8 @@ def dungeon06():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon07():
     shuffle(COLORS)
 
@@ -314,6 +339,8 @@ def dungeon07():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon08():
     shuffle(COLORS)
 
@@ -358,6 +385,8 @@ def dungeon08():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon09():
     shuffle(COLORS)
 
@@ -402,6 +431,8 @@ def dungeon09():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon10():
     shuffle(COLORS)
 
@@ -446,6 +477,8 @@ def dungeon10():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon11():
     shuffle(COLORS)
 
@@ -490,6 +523,8 @@ def dungeon11():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon12():
     shuffle(COLORS)
 
@@ -534,6 +569,8 @@ def dungeon12():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon13():
     shuffle(COLORS)
 
@@ -578,6 +615,8 @@ def dungeon13():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon14():
     shuffle(COLORS)
 
@@ -622,6 +661,8 @@ def dungeon14():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon15():
     shuffle(COLORS)
 
@@ -666,6 +707,8 @@ def dungeon15():
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
 
+
+@dungeon_factory
 def dungeon16():
     shuffle(COLORS)
 
