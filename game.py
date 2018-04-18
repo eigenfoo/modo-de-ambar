@@ -75,40 +75,25 @@ def yoshua_minigame():
 @when('take yann')
 def yann_minigame():
     obj = current_room.items.take('yann')
-    say('''Geoffrey Pinch-one the Miserly huddles over his treasure chest.''')
-    say('''As you approach, he sniffs and snorts in indignant surprise, as if
-        you had interrupted something.''')
-    say('''His expression quickly turns to one of guilt and remorse''')
-    say('''He offers to leave you his treasure chest if you allow him to go on
-        his way.''')
+    say('''Atop a reeking pile of garbage and linear algebra sits Yann Raccoon
+        the Famished, scavenging for his next dinner, or next publishable
+        theorem.''')
+    say('''He catches sight of you, and stops his ferreting to stare.''')
     print('')
-    ans = input('Do you accept his offer? (y/N) ')
+    ans = input('Do you offer him food? (y/N) ')
+    print('')
 
     if ans == 'y':
-        s = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit' \
-            if randint(0, 1) == 1 else 'Integer vestibulum aliquet orci ac pulvinar'
-
-        print('')
-        say('''You inspect the treasure chest closely.''')
-        say('''It is locked.''')
-        say('''But wait... there is an inscription on the padlock.''')
-        print('')
-        say('Press any key to examine the inscription.')
-        ans = input('')
-        print(s)
-        print('')
-        ans = input('Quick! Reproduce the inscription! ')
-        if ans == s:
-            say('The treasure chest clicks open.')
-            bag.add(obj)
-            return
-        else:
-            say('''You are unsuccessful. Geoffrey creeches in gleeful joy.''')
-            return
+        say('''Yann scampers down from the mountain of linear trash.''')
+        say('''He is actually extremely clean and hygienic, and very much
+            despises the fact that he needs to rummage to find his meals.''')
+        say('''As a gesture of gratitude and goodwill, he offers you a strange
+            clockwork mechanism that he found in the pile.''')
+        bag.add(obj)
+        return
     else:
-        print('')
-        say('''You decline. Geoffrey snorts in disdain, and continues to huddle
-            over his chest.''')
+        say('''You walk away in disgust. Yann continues his incessant
+            scrouging.''')
         return
 
 
