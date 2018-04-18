@@ -12,7 +12,10 @@ from adventurelib import (when, start, Room, Item, Bag,
 
 
 Room.items = Bag()
-bag = Bag()
+
+food = Item('food')
+food.level = 10
+bag = Bag([food])
 
 possible_dungeons = [dungeon01, dungeon05, dungeon09, dungeon13,
                      dungeon02, dungeon06, dungeon10, dungeon14,
@@ -193,6 +196,9 @@ def take(item):
             bag.add(obj)
         else:
             return
+    elif obj.name == 'food':
+        obj.level += 1
+        return
 
     if obj:
         say('You pick up the %s.' % obj)
@@ -208,6 +214,13 @@ def take(item):
 
 @when('drop THING')
 def drop(thing):
+    if thing == 'food':
+        say('You drop a food pack.')
+        food = bag.find('food')
+        food.level -= 1
+        current_room.items.add(Item('food pack'))
+        return
+
     obj = bag.take(thing)
     if not obj:
         say('You do not have a %s.' % thing)
@@ -247,7 +260,11 @@ def show_bag():
         say('You open your bag.')
         say('You have:')
         for thing in bag:
-            say(thing)
+            if thing.name == 'food':
+                food = bag.find('food')
+                say('food: x{}'.format(food.level))
+            else:
+                say(thing)
     else:
         say('Your bag is empty!')
 
