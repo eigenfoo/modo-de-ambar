@@ -544,7 +544,6 @@ def say(msg):
     width = get_terminal_size()[0]
     paragraphs = re.split(r'\n(?:[ \t]*\n)', msg)
     formatted = (textwrap.fill(p.strip(), width=width) for p in paragraphs)
-    os.system('clear')
     print('\n\n'.join(formatted))
 
 

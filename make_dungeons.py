@@ -1,21 +1,45 @@
-from random import shuffle, sample
+from random import shuffle, sample, randint
 from adventurelib import (when, start, Room, Item, Bag,
                           say, set_context, get_context)
 
 COLORS = ['green', 'red', 'blue', 'purple',
           'orange', 'white', 'yellow', 'black']
 
-ITEMS = ['spare tires', 'scroll', 'treasure chest']
+ITEMS = ['spare tires', 'scroll', 'yoshua', 'geoffrey', 'yann']
 
 def dungeon_factory(dungeon_func):
-    *rooms, wait, exit_dir = dungeon_func()
+    def wrapper():
+        *rooms, wait, exit_dir = dungeon_func()
 
-    items = [ITEMS[i]
-             for i in sorted(sample(range(len(ITEMS)), 4))]
+        num_items = randint(1, 4)
+        items = [ITEMS[i]
+                 for i in sample(range(len(ITEMS)), num_items)]
 
-    # mallet = Item('rusty mallet', 'mallet')
-    # valley.items = Bag({mallet})
-    return rooms, wait, exit_dir
+        for item in items:
+            if item == ITEMS[0]:
+                room_num = randint(0, 7)
+                tires = Item('spare tires')
+                rooms[room_num].items = Bag({tires})
+            elif item == ITEMS[1]:
+                room_num = randint(0, 7)
+                scroll = Item('scroll')
+                rooms[room_num].items = Bag({scroll})
+            elif item == ITEMS[2]:
+                room_num = randint(0, 7)
+                yoshua = Item('yoshua')
+                rooms[room_num].items = Bag({yoshua})
+            elif item == ITEMS[3]:
+                room_num = randint(0, 7)
+                geoffrey = Item('geoffrey')
+                rooms[room_num].items = Bag({geoffrey})
+            elif item == ITEMS[4]:
+                room_num = randint(0, 7)
+                yann = Item('yann')
+                rooms[room_num].items = Bag({yann})
+
+        return [*rooms, wait, exit_dir]
+
+    return wrapper
 
 
 @dungeon_factory
