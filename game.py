@@ -136,6 +136,10 @@ def geoffrey_minigame():
         return False
 
 
+@when('n', direction='north')
+@when('s', direction='south')
+@when('e', direction='east')
+@when('w', direction='west')
 @when('north', direction='north')
 @when('south', direction='south')
 @when('east', direction='east')
@@ -192,10 +196,10 @@ def take(item):
 
     if obj:
         say('You pick up the %s.' % obj)
-        if obj == 'spare tire':
+        if obj.name == 'spare tire':
             say('You think this will help to make your vehicle faster.')
             bag.add(obj)
-        elif obj == 'scroll':
+        elif obj.name == 'scroll':
             say('You are immediately possessed by a profound sense of loss...')
             bag.add(obj)
     else:
@@ -218,6 +222,23 @@ def look():
     if current_room.items:
         for i in current_room.items:
             say('A %s is here.' % i)
+
+    if 'north' in current_room.exits():
+        print('      N\n      ^\n      |')
+    else:
+        print('\n\n\n')
+    if 'west' in current_room.exits():
+        sys.stdout.write('W < - o')
+    else:
+        sys.stdout.write('      o')
+    if 'east' in current_room.exits():
+        sys.stdout.write(' - > E')
+    sys.stdout.write('\n')
+    sys.stdout.flush()
+    if 'south' in current_room.exits():
+        print('      |\n      v\n      S')
+    else:
+        print('\n\n\n')
 
 
 @when('bag')
