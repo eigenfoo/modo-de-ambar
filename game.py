@@ -35,7 +35,7 @@ waits = [wait1, wait2, wait3]
 current_room = room11
 
 
-@when('take yoshua')
+#@when('take yoshua')
 def yoshua_minigame():
     obj = current_room.items.take('yoshua')
     say('''In the far corner of the cavernous room, you spy Yoshua
@@ -72,7 +72,7 @@ def yoshua_minigame():
         return
 
 
-@when('take yann')
+#@when('take yann')
 def yann_minigame():
     obj = current_room.items.take('yann')
     say('''Atop a reeking pile of garbage and linear algebra sits Yann Raccoon
@@ -97,13 +97,13 @@ def yann_minigame():
         return
 
 
-@when('take geoffrey')
+#@when('take geoffrey')
 def geoffrey_minigame():
     obj = current_room.items.take('geoffrey')
     say('''Geoffrey Pinch-one the Miserly huddles over his treasure chest.''')
     say('''As you approach, he sniffs and snorts in indignant surprise, as if
         you had interrupted something.''')
-    say('''His expression quickly turns to one of guilt and remorse''')
+    say('''His expression quickly turns to one of guilt and remorse.''')
     say('''He offers to leave you his treasure chest if you allow him to go on
         his way.''')
     print('')
@@ -111,7 +111,8 @@ def geoffrey_minigame():
 
     if ans == 'y':
         s = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit' \
-            if randint(0, 1) == 1 else 'Integer vestibulum aliquet orci ac pulvinar'
+            if randint(0, 1) == 1 \
+            else 'Integer vestibulum aliquet orci ac pulvinar'
 
         print('')
         say('''You inspect the treasure chest closely.''')
@@ -121,6 +122,7 @@ def geoffrey_minigame():
         say('Press any key to examine the inscription.')
         ans = input('')
         print(s)
+        print('')
         ans = input('Quick! Reproduce the inscription! ')
         if ans == s:
             say('The treasure chest clicks open.')
@@ -171,13 +173,23 @@ def go(direction):
 @when('take ITEM')
 def take(item):
     obj = current_room.items.take(item)
+    if obj.name == 'Yann':
+        yann_minigame()
+        print('asdf')
+    elif obj.name == 'Yoshua':
+        yoshua_minigame()
+        print('asdf')
+    elif obj.name == 'Geoffrey':
+        geoffrey_minigame()
+        print('asdf')
+
     if obj:
         say('You pick up the %s.' % obj)
         if obj == 'spare tire':
             say('You think this will help to make your vehicle faster.')
             bag.add(obj)
         elif obj == 'scroll':
-            say('You are possessed by a sense of loss...')
+            say('You are immediately possessed by a profound sense of loss...')
             bag.add(obj)
     else:
         say('There is no %s here.' % item)
@@ -212,16 +224,10 @@ def show_bag():
         say('Your bag is empty!')
 
 
-@when('cast', context='magic_aura', magic=None)
-def cast(magic):
-    if magic is None:
-        say("Which magic you would like to spell?")
-
-
 @when('wait', context='wait')
 def wait():
     ''' FIXME note that sl is a requirement, but NOT a python requirement '''
-    for i in range(3):
+    for i in range(2):
         subprocess.call(['sl'])
 
     global current_room
