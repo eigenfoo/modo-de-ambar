@@ -5,7 +5,7 @@ from adventurelib import (when, start, Room, Item, Bag,
 COLORS = ['green', 'red', 'blue', 'purple',
           'orange', 'white', 'yellow', 'black']
 
-ITEMS = ['spare tires', 'scroll', 'yoshua', 'geoffrey', 'yann']
+ITEMS = ['spare tire', 'scroll', 'Yoshua', 'Geoffrey', 'Yann']
 
 def dungeon_factory(dungeon_func):
     def wrapper():
@@ -18,7 +18,7 @@ def dungeon_factory(dungeon_func):
         for item in items:
             if item == ITEMS[0]:
                 room_num = randint(0, 7)
-                tires = Item('spare tires')
+                tires = Item('spare tire')
                 rooms[room_num].items = Bag({tires})
             elif item == ITEMS[1]:
                 room_num = randint(0, 7)
@@ -26,15 +26,15 @@ def dungeon_factory(dungeon_func):
                 rooms[room_num].items = Bag({scroll})
             elif item == ITEMS[2]:
                 room_num = randint(0, 7)
-                yoshua = Item('yoshua')
+                yoshua = Item('Yoshua')
                 rooms[room_num].items = Bag({yoshua})
             elif item == ITEMS[3]:
                 room_num = randint(0, 7)
-                geoffrey = Item('geoffrey')
+                geoffrey = Item('Geoffrey')
                 rooms[room_num].items = Bag({geoffrey})
             elif item == ITEMS[4]:
                 room_num = randint(0, 7)
-                yann = Item('yann')
+                yann = Item('Yann')
                 rooms[room_num].items = Bag({yann})
 
         return [*rooms, wait, exit_dir]
