@@ -4,7 +4,7 @@ import os
 import argparse
 
 mode = OperationMode(train=True,new_init=False,control=False)
-synth = ANNeSynth(mode,corpus='lyre_frames.npy')
+synth = ANNeSynth(mode,corpus='corpora/lyre_frames.npy')
 
 def get_arguments():
   parser = argparse.ArgumentParser(description='SampleRnn example network')
