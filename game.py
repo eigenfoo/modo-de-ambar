@@ -139,10 +139,10 @@ def geoffrey_minigame():
         return False
 
 
-@when('n', direction='north')
-@when('s', direction='south')
-@when('e', direction='east')
-@when('w', direction='west')
+@when('forward', direction='north')
+@when('back', direction='south')
+@when('left', direction='east')
+@when('right', direction='west')
 @when('north', direction='north')
 @when('south', direction='south')
 @when('east', direction='east')
@@ -178,29 +178,30 @@ def go(direction):
 @when('take ITEM')
 def take(item):
     obj = current_room.items.take(item)
-    if obj.name == 'Yann':
-        success = yann_minigame()
-        if success:
-            bag.add(obj)
-        else:
-            return
-    elif obj.name == 'Yoshua':
-        success = yoshua_minigame()
-        if success:
-            bag.add(obj)
-        else:
-            return
-    elif obj.name == 'Geoffrey':
-        success = geoffrey_minigame()
-        if success:
-            bag.add(obj)
-        else:
-            return
-    elif obj.name == 'food':
-        obj.level += 1
-        return
 
     if obj:
+        if obj.name == 'Yann':
+            success = yann_minigame()
+            if success:
+                bag.add(obj)
+            else:
+                return
+        elif obj.name == 'Yoshua':
+            success = yoshua_minigame()
+            if success:
+                bag.add(obj)
+            else:
+                return
+        elif obj.name == 'Geoffrey':
+            success = geoffrey_minigame()
+            if success:
+                bag.add(obj)
+            else:
+                return
+        elif obj.name == 'food':
+            obj.level += 1
+            return
+
         say('You pick up the %s.' % obj)
         if obj.name == 'spare tire':
             say('You think this will help to make your vehicle faster.')
