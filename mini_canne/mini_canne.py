@@ -271,7 +271,7 @@ class ANNeSynth:
 		ckpt = tf.train.latest_checkpoint(self.topology.chkpt_name)
 		self.saver.restore(self._sess, ckpt)
 
-	def play_synth(self,values, n_frames=300,LFO=False,filename='loop.wav'):
+	def play_synth(self,values, n_frames=300,LFO=0,filename='loop.wav'):
 		len_window = 4096 #Specified length of analysis window
 		hop_length = 1024 #Specified percentage hop length between windows
 		mag_buffer = np.zeros((self.topology.output_size,1))
@@ -279,21 +279,27 @@ class ANNeSynth:
 		for ii in range(n_frames):
 			orig_hat = np.reshape(self._sess.run(self.outputLayer2,feed_dict={self.controller:activations}),[self.topology.output_size,-1])
 			mag_buffer = np.hstack((mag_buffer,orig_hat))		
-		if LFO:
+		if LFO>0:
 			current_activations = np.zeros((1,16))
 			mag_buffer = np.zeros((self.topology.output_size,1))
-			lfo_freq = 50
+			lfo_freq = LFO
 			for ii in range(n_frames):
-				current_activations[:,0:5] = activations[:,0:5]*(1.0+0.25*np.sin(2*np.pi*ii*lfo_freq/20000))
-				current_activations[:,5:10] = activations[:,5:10]*(1.0+0.25*np.sin(2*np.pi*ii*lfo_freq*0.707107/20000))
-				current_activations[:,10:] = activations[:,10:]*(1.0+0.25*np.sin(2*np.pi*ii*lfo_freq*0.415253/20000))
+				current_activations[:,0:4] = activations[:,0:4]*(1.0+0.25*np.sin(2*np.pi*ii*lfo_freq/20000))
+				current_activations[:,4:8] = activations[:,4:8]*(1.0+0.25*np.sin(2*np.pi*ii*lfo_freq*0.707107/20000))
+				current_activations[:,8:12] = activations[:,8:12]*(1.0+0.25*np.sin(2*np.pi*ii*lfo_freq*0.415253/20000))
+				current_activations[:,12:] = activations[:,12:]*(1.0+0.25*np.sin(2*np.pi*ii*lfo_freq*0.19258/20000))
 				orig_hat = np.reshape(self._sess.run(self.outputLayer2,feed_dict={self.controller:current_activations}),[self.topology.output_size,-1])
 				mag_buffer = np.hstack((mag_buffer,orig_hat))
 
-		mag_buffer = 50*mag_buffer#*np.random.uniform(low=0.999, high=1.001, size=np.shape(mag_buffer))#+np.random.uniform(low=1,high=20,size=np.shape(mag_buffer))
-		bass_boost = (np.exp(np.linspace(1,-4,self.topology.output_size)))
-		# bass_boost = np.ones(self.topology.output_size)
-		# bass_boost[300:] *= np.cos(np.linspace(0,np.pi/2,len(bass_boost[300:])))
+		mag_buffer = 50*mag_buffer
+		bass_boost = np.ones(self.topology.output_size)
+		bass_boost[20:29] *= np.linspace(1,0.3,num=len(bass_boost[20:29]))
+		bass_boost[29:40] *= np.linspace(0.3,0.1,num=len(bass_boost[29:40]))
+		bass_boost[40:57] *= np.linspace(0.1,0.02,num=len(bass_boost[40:57]))
+		bass_boost[57:80] *= np.linspace(0.02,0.03,num=len(bass_boost[57:80]))
+		bass_boost[80:114] *= np.linspace(0.03,0.1,num=len(bass_boost[80:114]))
+		bass_boost[114:160] *= np.linspace(0.1,0.2,num=len(bass_boost[114:160]))
+		bass_boost[160:] *= 0.2
 		for ii in range(n_frames):
 			mag_buffer[:,ii] = np.roll(mag_buffer[:,ii],int(values[:,8]))*bass_boost
 		T = do_rtpghi_gaussian_window(mag_buffer, len_window, int(hop_length)) #Initializes phase
@@ -305,7 +311,7 @@ class ANNeSynth:
 		T[:crossfade_time] = fade_in*T[:crossfade_time]+fade_out*T[len(T)-crossfade_time:]
 		U = T[:len(T)-crossfade_time]
 		V = np.hstack((U,U,U,U))
-		b, a = sci.signal.butter(10, 0.4, 'low', analog=False)
+		b, a = sci.signal.butter(16, 0.27, 'low', analog=False)
 		S = sci.signal.lfilter(b,a,V)
 		sf.write(filename, S, 44100, subtype='PCM_16')  #Must be 16bit PCM to work with pygame
 
