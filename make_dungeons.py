@@ -384,7 +384,7 @@ def dungeon06():
     room6 = room5.south = Room("""
     The kitchen area is pretty small.
     """)
-    room5.desc = """
+    room6.desc = """
     There’s barely enough space for 1 stove burner and a tiny sink.\n
     This is where the two of you store your toothbrushes.
     """
@@ -407,7 +407,7 @@ def dungeon06():
     room8.desc = """
     Your shoes are neatly arranged in the corner.
     """
-    shoes = Item('shoes')
+    shoes = Item('pair of shoes')
     room8.items = Bag({shoes})
 
     wait = room8.south = Room("""

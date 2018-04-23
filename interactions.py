@@ -219,11 +219,11 @@ def fishing_stations():
 items = \
     ['Dad', 'dinner', 'framed photograph', 'music box',
      'phone', 'friend', 'shower', 'towel', 'soap', 'toothbrush', 'toothpaste',
-     'sink',
+     'sink', 'pair of shoes',
      'rope', 'backpack']
 
 
 helper_funcs = \
     [dad, dinner, photo, music_box,
-     phone, friend, shower, towel, soap, toothbrush, toothpaste, sink,
+     phone, friend, shower, towel, soap, toothbrush, toothpaste, sink, shoes,
      rope, backpack]
