@@ -7,6 +7,7 @@ from make_dungeons import (dungeon01, dungeon05, dungeon09, dungeon13,
                            dungeon02, dungeon06, dungeon10, dungeon14,
                            dungeon03, dungeon07, dungeon11, dungeon15,
                            dungeon04, dungeon08, dungeon12, dungeon16)
+import interactions
 from adventurelib import (when, start, Room, Item, Bag,
                           say, set_context, get_context)
 
@@ -168,7 +169,7 @@ def go(direction):
         os.system('clear')
         current_room = room
         say('You go {}.'.format(direction))
-        look()
+        brief_look()
         if room in waits:
             set_context('wait.waiting')
         else:
@@ -180,37 +181,20 @@ def take(item):
     obj = current_room.items.take(item)
 
     if obj:
-        if obj.name == 'Yann':
-            success = yann_minigame()
-            if success:
-                bag.add(obj)
+        if obj.name in interactions.items:
+            i = interactions.items.index(obj.name)
+            s1, s2 = interactions.helper_funcs[i]()
+            say('{}'.format(s1))
+            if s2:
+                print('')
+                say('{}'.format(s2))
             else:
-                return
-        elif obj.name == 'Yoshua':
-            success = yoshua_minigame()
-            if success:
-                bag.add(obj)
-            else:
-                return
-        elif obj.name == 'Geoffrey':
-            success = geoffrey_minigame()
-            if success:
-                bag.add(obj)
-            else:
-                return
-        elif obj.name == 'food':
-            obj.level += 1
-            return
-
-        say('You pick up the %s.' % obj)
-        if obj.name == 'spare tire':
-            say('You think this will help to make your vehicle faster.')
+                say('You pick up the {}.'.format(item))
             bag.add(obj)
-        elif obj.name == 'scroll':
-            say('You are immediately possessed by a profound sense of loss...')
-            bag.add(obj)
+        else:
+            raise Exception("Item missing from interactions.py!!")
     else:
-        say('There is no %s here.' % item)
+        say('There is no {} here.'.format(item))
 
 
 @when('drop THING')
@@ -230,9 +214,10 @@ def drop(thing):
         current_room.items.add(obj)
 
 
-@when('look')
-def look():
+def brief_look():
     say(current_room)
+    print('')
+
     if current_room.items:
         for i in current_room.items:
             say('A %s is here.' % i)
@@ -253,6 +238,12 @@ def look():
         print('      |\n      v\n      S')
     else:
         print('\n\n\n')
+
+
+@when('look')
+def look():
+    say(current_room.desc)
+    print('')
 
 
 @when('bag')
@@ -293,6 +284,6 @@ def wait():
 
 if __name__ == '__main__':
     os.system('clear')
-    look()
+    brief_look()
     print('')
     start()
