@@ -96,7 +96,7 @@ def shower():
 def towel():
     s1 = """
     A common white bath towel.
-    There is nothing special about this item.
+    There is nothing special about it.
     """
 
     s2 = ""
@@ -107,7 +107,7 @@ def towel():
 def soap():
     s1 = """
     Common bar soap.
-    There is nothing special about this item,
+    There is nothing special about it,
     except for the slight fragrance of lavender.
     """
 
@@ -157,10 +157,74 @@ def shoes():
     return s1, s2
 
 
+def rope():
+    s1 = """
+    A strong fibrous rope. You aren’t quite sure what it’s used for.
+    """
+
+    s2 = ""
+
+    return s1, s2
+
+
+def backpack():
+    s1 = """
+    The camping backpack you brought to Alaska.
+    """
+
+    s2 = ""
+
+    return s1, s2
+
+
+def anchor():
+    s1 = """
+    Seems important.
+    Large heavy and connected by a thick chain. 
+    """
+
+    s2 = ""
+
+    return s1, s2
+
+
+def fishing_rod():
+    s1 = """
+    A fishing rod dedicated to deep sea fishing.
+    It’s heavy and has many complicated levers.
+    You should probably find an instructor to use it.
+    """
+    
+    s2 = ""
+
+    return s1, s2
+
+
+def fishing_stations():
+    s1 = """
+    The captain sets both you and your friend up with the fishing stations.
+    """
+
+    s2 = """
+    Your friend catches a flounder first.
+    It’s a huge flounder, the captain shoots it
+    and quickly throws it into the storage bellow.
+    You catch a slightly smaller flounder.
+    The captain just gaffs it and throws it into storage.
+    You both safely return to Anchorage. 
+    """
+
+    return s1, s2
+
+
 items = \
     ['Dad', 'dinner', 'framed photograph', 'music box',
-     'phone', 'friend', 'shower', 'towel', 'soap', 'toothbrush', 'toothpaste', 'sink']
+     'phone', 'friend', 'shower', 'towel', 'soap', 'toothbrush', 'toothpaste',
+     'sink',
+     'rope', 'backpack']
+
 
 helper_funcs = \
     [dad, dinner, photo, music_box,
-     phone, friend, shower, towel, soap, toothbrush, toothpaste, sink]
+     phone, friend, shower, towel, soap, toothbrush, toothpaste, sink,
+     rope, backpack]

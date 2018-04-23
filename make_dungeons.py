@@ -160,39 +160,75 @@ def dungeon02():
 
 
 def dungeon03():
-    
-
     room1 = Room("""
-    You are in a {} room.
-    """.format(COLORS[0]))
+    The boat is shaking quite vigorously.
+    """)
+    room1.desc = """
+    You hope the dramamine that you took last night will help fight off the 
+    motion sickness. Your friend and his mom are also on the boat.
+    The captain is mumbling something incomprehensible in the corner.
+    """
 
     room2 = room1.east = Room("""
-    You are in a {} room.
-    """.format(COLORS[1]))
+    This is the right side of the boat.
+    """)
+    room2.desc = """
+    Clouds are forming in the distance, you hope it doesn’t rain.
+    """
+    rope = Item('rope')
+    backpack = Item('backpack')
+    room2.items = Bag({bag, backpack})
 
     room3 = room2.south = Room("""
-    You are in a {} room.
-    """.format(COLORS[2]))
+    The captain is demoing how to catch flounder.
+    """)
+    room3.desc = """
+    The fishing line takes 5 minutes to reach the bottom of these open waters.
+    """
 
     room4 = room3.south = Room("""
-    You are in a {} room.
-    """.format(COLORS[3]))
+    You see the giant anchor holding the boat’s position.
+    """)
+    room4.desc = """
+    Best not to touch it.
+    """
+    anchor = Item('anchor')
+    room4.items = Bag({anchor})
 
     room5 = room1.west = Room("""
-    You are in a {} room.
-    """.format(COLORS[4]))
+    This is the left side of the boat.
+    """)
+    room5.desc = """
+    You can barely see the shores of Anchorage.
+    Seagulls fly over the boat.
+    Your friend is staring off into the distance with his fishing rod.
+    Maybe he’s thinking of home?
+    """
 
     room6 = room5.west = Room("""
-    You are in a {} room.
-    """.format(COLORS[5]))
+    You start to feel the motion sickness creep up.
+    """)
+    room6.desc = """
+    You should probably go back.
+    """
 
     room7 = room5.south = Room("""
-    You are in a {} room.
-    """.format(COLORS[6]))
+    The boat’s name is Big Thunder.
+    """)
+    room7.desc = """
+    You wonder who came up with that stupid sounding name.
+    """
+    fishing_rod = Item('fishing rod')
+    room7.items = Bag({fishing_rod})
 
     room8 = room7.south = Room("""
-    You are in a {} room.
-    """.format(COLORS[7]))
+    The captain has set up stations for you and your friend to fish.
+    """)
+    room8.desc = """
+    He seems to be getting impatient.
+    """
+    fishing_stations = Item('fishing stations')
+    room8.items = Bag({fishing_stations})
 
     wait = room8.west = Room("""
     You are in a waiting room.
