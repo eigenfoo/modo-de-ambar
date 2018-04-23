@@ -2,83 +2,98 @@ from random import shuffle, sample, randint
 from adventurelib import (when, start, Room, Item, Bag,
                           say, set_context, get_context)
 
-COLORS = ['green', 'red', 'blue', 'purple',
-          'orange', 'white', 'yellow', 'black']
 
-ITEMS = ['spare tire', 'scroll', 'Yoshua', 'Geoffrey', 'Yann']
-
-def dungeon_factory(dungeon_func):
-    def wrapper():
-        *rooms, wait, exit_dir = dungeon_func()
-
-        num_items = randint(1, 4)
-        items = [ITEMS[i]
-                 for i in sample(range(len(ITEMS)), num_items)]
-
-        for item in items:
-            if item == ITEMS[0]:
-                room_num = randint(0, 7)
-                tires = Item('spare tire')
-                rooms[room_num].items = Bag({tires})
-            elif item == ITEMS[1]:
-                room_num = randint(0, 7)
-                scroll = Item('scroll')
-                rooms[room_num].items = Bag({scroll})
-            elif item == ITEMS[2]:
-                room_num = randint(0, 7)
-                yoshua = Item('Yoshua')
-                rooms[room_num].items = Bag({yoshua})
-            elif item == ITEMS[3]:
-                room_num = randint(0, 7)
-                geoffrey = Item('Geoffrey')
-                rooms[room_num].items = Bag({geoffrey})
-            elif item == ITEMS[4]:
-                room_num = randint(0, 7)
-                yann = Item('Yann')
-                rooms[room_num].items = Bag({yann})
-
-        return [*rooms, wait, exit_dir]
-
-    return wrapper
-
-
-@dungeon_factory
 def dungeon01():
-    shuffle(COLORS)
+    room1 = Room("""You enter your home.""")
+    room1.desc = """
+    Going abroad for college, you don’t really get to go home much. Most of
+    your friends take a two or three hour train ride back to home, but it’s a
+    16 hour flight for you.
+    
+    You’ve spent 18 years of your life in this home of homes, and one day you
+    packed your life into a suitcase and left. That’s how you left home, and
+    that’s how you come back to it: with a suitcase.
+    """
 
-    room1 = Room("""
-    You are in a {} room.
-    """.format(COLORS[0]))
+    room2 = room1.west = Room("""
+    You move into the kitchen.
+    Your dad is cooking.
+    It smells wonderful, as always.
+    """)
+    room2.desc = """
+    A beef stew with salad: one of your dad’s specials.
+    The smell of lovingly caramelized beef and delightfully cooked vegetables
+    envelops the kitchen as your dad plates up the food.
+    """
+    # FIXME put dad here!
 
-    room2 = room1.south = Room("""
-    You are in a {} room.
-    """.format(COLORS[1]))
+    room3 = room2.west = Room("""
+    The dining table is set for dinner.
+    Your mom is sitting watching the evening news on TV.
+    """)
+    room3.desc = """
+    You mentally tune out the news.
+    Something about more demonstrations and protests.
+    You get so tired of the politicking that goes on here sometimes.
+    """
 
-    room3 = room2.east = Room("""
-    You are in a {} room.
-    """.format(COLORS[2]))
+    room4 = room3.south = Room("""
+    The hallway is dark.
+    You turn on the lights, which throws amber light
+    on what would otherwise been bare white walls.
+    """)
+    room4.desc = """
+    You’ve always thought that the walls should be decorated.
+    Perhaps photos of dad, you think.
+    He’s always the one taking photos, he always insists on it,
+    but that means that no one takes photos of him.
+    It’d be nice to see a photo of him.
+    """
 
-    room4 = room1.north = Room("""
-    You are in a {} room.
-    """.format(COLORS[3]))
+    room5 = room3.west = Room("""
+    You enter your dad’s study.
+    """)
+    room5.desc = """
+    The study is dark, but the light from the corridor pierces through
+    the hinges of the door and collides into the bookshelf.
+    It reflects off something, startling you.
+    """
 
-    room5 = room4.east = Room("""
-    You are in a {} room.
-    """.format(COLORS[4]))
+    room6 = room3.north = Room("""
+    You enter the master bedroom.
+    """)
+    room6.desc = """
+    It’s dark and cold.
+    The lights are off, and your dad never turns off the air conditioning.
+    The imperturbable blue light in corner of the ceiling stares back at you,
+    as it continues to blow cold air into the room.
+    """
 
-    room6 = room5.east = Room("""
-    You are in a {} room.
-    """.format(COLORS[5]))
+    room7 = room6.north = Room("""
+    You enter your helper’s room.
+    """)
+    room7.desc = """
+    It’s by far the smallest of the rooms, and the most full of stuff.
+    Growing up, you never really understood that domestic helpers weren’t common
+    in other parts of the world...
+    In fact, thinking about it now, it’s a bit strange
+    to let someone else into your home
+    and treat them basically as part of the family,
+    but that they’re under your employ.
+    """
 
-    room7 = room6.south = Room("""
-    You are in a {} room.
-    """.format(COLORS[6]))
+    room8 = room1.north = Room("""
+    You enter your room.
+    """)
+    room8.desc = """
+    It’s your room.
+    You can navigate even though its black as death.
+    It’s pretty simple to navigate though,
+    your dad made sure the bookshelf was placed in a way
+    to make sure you wouldn’t accidentally hurt yourself.
+    """
 
-    room8 = room7.east = Room("""
-    You are in a {} room.
-    """.format(COLORS[7]))
-
-    wait = room8.south = Room("""
+    wait = room8.east = Room("""
     You are in a waiting room.
     """)
 
@@ -88,10 +103,8 @@ def dungeon01():
             wait, exit_dir]
 
 
-@dungeon_factory
-def dungeon02():
-    shuffle(COLORS)
 
+def dungeon02():
     room1 = Room("""
     You are in a {} room.
     """.format(COLORS[0]))
@@ -134,9 +147,9 @@ def dungeon02():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon03():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -180,9 +193,9 @@ def dungeon03():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon04():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -226,9 +239,9 @@ def dungeon04():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon05():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -272,9 +285,9 @@ def dungeon05():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon06():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -318,9 +331,9 @@ def dungeon06():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon07():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -364,9 +377,9 @@ def dungeon07():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon08():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -410,9 +423,9 @@ def dungeon08():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon09():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -456,9 +469,9 @@ def dungeon09():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon10():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -502,9 +515,9 @@ def dungeon10():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon11():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -548,9 +561,9 @@ def dungeon11():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon12():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -594,9 +607,9 @@ def dungeon12():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon13():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -640,9 +653,9 @@ def dungeon13():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon14():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -686,9 +699,9 @@ def dungeon14():
             wait, exit_dir]
 
 
-@dungeon_factory
+
 def dungeon15():
-    shuffle(COLORS)
+    
 
     room1 = Room("""
     You are in a {} room.
@@ -732,10 +745,8 @@ def dungeon15():
             wait, exit_dir]
 
 
-@dungeon_factory
-def dungeon16():
-    shuffle(COLORS)
 
+def dungeon16():
     room1 = Room("""
     You are in a {} room.
     """.format(COLORS[0]))
