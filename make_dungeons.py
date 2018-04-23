@@ -298,39 +298,71 @@ def dungeon05():
 
 
 def dungeon06():
-    
-
     room1 = Room("""
-    You are in a {} room.
-    """.format(COLORS[0]))
+    You wake up to the faint smell of morning air.
+    """)
+    room1.desc = """
+    The ambient snoring of your friend fills the room.
+    It suddenly dawns upon you that you are in an AirBnb in Kyoto.
+    You should probably get ready and prepare for a full day of adventuring.
+    """)
+    phone = Item('phone')
+    friend = Item('friend')
+    room1.items = Bag({phone, friend})
 
     room2 = room1.north = Room("""
-    You are in a {} room.
-    """.format(COLORS[1]))
+    The sliding door is slightly ajar.
+    The dawn light streams through the curtains in a surreal manner.
+    The buildings of Kyoto stand proud against the horizon.
+    A chilly breeze continuously enters the room from beyond the balcony.
+    """)
 
     room3 = room2.north = Room("""
-    You are in a {} room.
-    """.format(COLORS[2]))
+    You open the sliding door and step onto the balcony.
+    It isn’t such a windy day today, thankfully.
+    You were lucky with this AirBnb, the view is incredible.
+    You can see all the way to the river.
+    Perhaps today would be a good day to go to the Kyoto Animation Store. 
+    """)
 
     room4 = room3.west = Room("""
-    You are in a {} room.
-    """.format(COLORS[3]))
+    You are faced with a giant building.
+    Well, not every direction can have amazing views.
+    """)
 
     room5 = room1.west = Room("""
-    You are in a {} room.
-    """.format(COLORS[4]))
+    The bathroom is pretty small.
+    In fact, the entire room is the shower room.
+    The plumbing is amazing though.
+    The shower is hot and has high water pressure.
+    """)
+    shower = Item('shower')
+    towel = Item('towel')
+    soap = Item('soap')
+    room5.items = Bag({shower, towel, soap})
 
     room6 = room5.south = Room("""
-    You are in a {} room.
-    """.format(COLORS[5]))
+    The kitchen area is pretty small.
+    There’s barely enough space for 1 stove burner and a tiny sink.
+    This is where the two of you store your toothbrushes.
+    """)
+    toothbrush = Item('toothbrush')
+    toothpaste = Item('toothpaste')
+    sink = Item('sink')
+    room5.items = Bag({toothbrush, toothpaste, sink})
 
     room7 = room6.south = Room("""
-    You are in a {} room.
-    """.format(COLORS[6]))
+    A dark hallway.
+    Strangely, this part of the apartment doesn’t have lights.
+    How peculiar. 
+    """)
 
     room8 = room7.east = Room("""
-    You are in a {} room.
-    """.format(COLORS[7]))
+    The entrance to the apartment.
+    Your shoes are neatly arranged in the corner.
+    """)
+    shoes = Item('shoes')
+    room8.items = Bag({shoes})
 
     wait = room8.south = Room("""
     You are in a waiting room.
@@ -760,35 +792,61 @@ def dungeon15():
 def dungeon16():
     room1 = Room("""
     You are in a {} room.
-    """.format(COLORS[0]))
+    """)
+    room1.desc = """
+    asdf
+    """
 
     room2 = room1.east = Room("""
     You are in a {} room.
-    """.format(COLORS[1]))
+    """)
+    room1.desc = """
+    asdf
+    """
 
     room3 = room1.north = Room("""
     You are in a {} room.
-    """.format(COLORS[2]))
+    """)
+    room1.desc = """
+    asdf
+    """
 
     room4 = room3.west = Room("""
     You are in a {} room.
-    """.format(COLORS[3]))
+    """)
+    room1.desc = """
+    asdf
+    """
 
     room5 = room3.north = Room("""
     You are in a {} room.
-    """.format(COLORS[4]))
+    """)
+    room1.desc = """
+    asdf
+    """
 
     room6 = room5.east = Room("""
     You are in a {} room.
-    """.format(COLORS[5]))
+    """)
+    room1.desc = """
+    asdf
+    """
 
     room7 = room6.north = Room("""
     You are in a {} room.
-    """.format(COLORS[6]))
+    """)
+    room1.desc = """
+    asdf
+    """
+    foo = Item('foobar')
+    room7.items = Bag({foo})
 
     room8 = room6.east = Room("""
     You are in a {} room.
-    """.format(COLORS[7]))
+    """)
+    room1.desc = """
+    asdf
+    """
 
     wait = room8.east = Room("""
     You are in a waiting room.

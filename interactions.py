@@ -56,5 +56,111 @@ def music_box():
     return s1, s2
 
 
-items = ['Dad', 'dinner', 'framed photograph', 'music box']
-helper_funcs = [dad, dinner, photo, music_box]
+def phone():
+    s1 = """
+    A black iPhone, plus model.
+    It has seen years of use which is apparent on the aluminum finish.
+    With its long battery life, it is sure to last an entire day’s sightseeing.
+    You’ve only been using it to take pictures of your vacation journey.
+    The excitement of being in a foreign country has eased
+    your addiction to mobile games.
+    """
+
+    s2 = ""
+
+    return s1, s2
+
+
+def friend():
+    s1 = """
+    You decide to wake up your friend.
+    You need an early start to get the most
+    out of exploring Kyoto today. 
+    """
+
+    s2 = " "
+    
+    return s1, s2
+
+
+def shower():
+    s1 = """
+    You spend 15 minutes in the shower.
+    """
+
+    s2 = "You feel refreshed."
+
+    return s1, s2
+
+
+def towel():
+    s1 = """
+    A common white bath towel.
+    There is nothing special about this item.
+    """
+
+    s2 = ""
+
+    return s1, s2
+
+
+def soap():
+    s1 = """
+    Common bar soap.
+    There is nothing special about this item,
+    except for the slight fragrance of lavender.
+    """
+
+    s2 = ""
+
+    return s1, s2
+
+
+def toothbrush():
+    s1 = """
+    A small travel sized toothbrush.
+    """
+
+    s2 = ""
+
+    return s1, s2
+
+def toothpaste():
+    s1 = """
+    A small tube of travel sized toothpaste.
+    """
+
+    s2 = ""
+
+    return s1, s2
+
+
+def sink():
+    s1 = """
+    You take 2 minutes to brush your teeth.
+    This is not the electric toothbrush you are used to.
+    Your hand feels slightly out of shape. 
+    """
+
+    s2 = "You finish brushing your teeth."
+
+    return s1, s2
+
+
+def shoes():
+    s1 = """
+    You slip into your very worn Nike Monarchs.
+    """
+    
+    s2 = ""
+
+    return s1, s2
+
+
+items = \
+    ['Dad', 'dinner', 'framed photograph', 'music box',
+     'phone', 'friend', 'shower', 'towel', 'soap', 'toothbrush', 'toothpaste', 'sink']
+
+helper_funcs = \
+    [dad, dinner, photo, music_box,
+     phone, friend, shower, towel, soap, toothbrush, toothpaste, sink]
