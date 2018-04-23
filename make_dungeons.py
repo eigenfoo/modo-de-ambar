@@ -305,37 +305,45 @@ def dungeon06():
     The ambient snoring of your friend fills the room.
     It suddenly dawns upon you that you are in an AirBnb in Kyoto.
     You should probably get ready and prepare for a full day of adventuring.
-    """)
+    """
     phone = Item('phone')
     friend = Item('friend')
     room1.items = Bag({phone, friend})
 
     room2 = room1.north = Room("""
-    The sliding door is slightly ajar.
+    The sliding door to the balcony is slightly ajar.
+    """)
+    room2.desc = """
     The dawn light streams through the curtains in a surreal manner.
     The buildings of Kyoto stand proud against the horizon.
     A chilly breeze continuously enters the room from beyond the balcony.
-    """)
+    """
 
     room3 = room2.north = Room("""
     You open the sliding door and step onto the balcony.
+    """)
+    room3.desc = """
     It isn’t such a windy day today, thankfully.
     You were lucky with this AirBnb, the view is incredible.
     You can see all the way to the river.
     Perhaps today would be a good day to go to the Kyoto Animation Store. 
-    """)
+    """
 
     room4 = room3.west = Room("""
     You are faced with a giant building.
-    Well, not every direction can have amazing views.
     """)
+    room4.desc = """
+    Well, not every direction can have amazing views.
+    """
 
     room5 = room1.west = Room("""
     The bathroom is pretty small.
+    """)
+    room5.desc = """
     In fact, the entire room is the shower room.
     The plumbing is amazing though.
     The shower is hot and has high water pressure.
-    """)
+    """
     shower = Item('shower')
     towel = Item('towel')
     soap = Item('soap')
@@ -343,9 +351,11 @@ def dungeon06():
 
     room6 = room5.south = Room("""
     The kitchen area is pretty small.
+    """)
+    room5.desc = """
     There’s barely enough space for 1 stove burner and a tiny sink.
     This is where the two of you store your toothbrushes.
-    """)
+    """
     toothbrush = Item('toothbrush')
     toothpaste = Item('toothpaste')
     sink = Item('sink')
@@ -353,14 +363,18 @@ def dungeon06():
 
     room7 = room6.south = Room("""
     A dark hallway.
+    """)
+    room7.desc = """
     Strangely, this part of the apartment doesn’t have lights.
     How peculiar. 
-    """)
+    """
 
     room8 = room7.east = Room("""
     The entrance to the apartment.
-    Your shoes are neatly arranged in the corner.
     """)
+    room8.desc = """
+    Your shoes are neatly arranged in the corner.
+    """
     shoes = Item('shoes')
     room8.items = Bag({shoes})
 
