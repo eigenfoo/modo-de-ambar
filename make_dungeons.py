@@ -190,7 +190,7 @@ def dungeon03():
     You see the giant anchor holding the boat’s position.
     """)
     room4.desc = """
-    Best not to touch it.
+    Best not to touch the anchor!
     """
     anchor = Item('anchor')
     room4.items = Bag({anchor})
@@ -222,13 +222,13 @@ def dungeon03():
     room7.items = Bag({fishing_rod})
 
     room8 = room7.south = Room("""
-    The captain has set up stations for you and your friend to fish.
+    The captain has set up station for you and your friend to fish.
     """)
     room8.desc = """
     He seems to be getting impatient.
     """
-    fishing_stations = Item('fishing stations')
-    room8.items = Bag({fishing_stations})
+    fishing_station = Item('fishing station')
+    room8.items = Bag({fishing_station})
 
     wait = room8.west = Room("""
     You are in a waiting room.

@@ -199,9 +199,9 @@ def fishing_rod():
     return s1, s2
 
 
-def fishing_stations():
+def fishing_station():
     s1 = """
-    The captain sets both you and your friend up with the fishing stations.
+    The captain sets both you and your friend up with the fishing station.
     """
 
     s2 = """
@@ -220,10 +220,10 @@ items = \
     ['Dad', 'dinner', 'framed photograph', 'music box',
      'phone', 'friend', 'shower', 'towel', 'soap', 'toothbrush', 'toothpaste',
      'sink', 'pair of shoes',
-     'rope', 'backpack']
+     'rope', 'backpack', 'anchor', 'fishing rod', 'fishing station']
 
 
 helper_funcs = \
     [dad, dinner, photo, music_box,
      phone, friend, shower, towel, soap, toothbrush, toothpaste, sink, shoes,
-     rope, backpack]
+     rope, backpack, anchor, fishing_rod, fishing_station]
