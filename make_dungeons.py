@@ -28,6 +28,7 @@ def dungeon01():
     Something about more demonstrations and protests.
     You get so tired of the politicking that goes on here sometimes.
     """
+    room2.dinner = False
 
     room3 = room2.west = Room("""
     The hallway is dark.
@@ -50,6 +51,8 @@ def dungeon01():
     the hinges of the door and collides into the bookshelf.
     It reflects off something, startling you.
     """
+    photo = Item('framed photograph')
+    room6.items = Bag({photo})
 
     room7 = room6.north = Room("""
     You enter the master bedroom.
@@ -84,6 +87,8 @@ def dungeon01():
     your dad made sure the bookshelf was placed in a way
     to make sure you wouldn’t accidentally hurt yourself.
     """
+    music_box = Item('music box')
+    room5.items = Bag({music_box})
 
     room8 = room1.north = Room("""
     You move into the kitchen.
@@ -96,7 +101,8 @@ def dungeon01():
     envelops the kitchen as your dad plates up the food.
     """
     dad = Item('Dad')
-    room8.items  = Bag({dad})
+    dinner = Item('dinner')
+    room8.items  = Bag({dad, dinner})
 
     wait = room8.east = Room("""
     You are in a waiting room.

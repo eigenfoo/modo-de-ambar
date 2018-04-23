@@ -210,6 +210,12 @@ def drop(thing):
     if not obj:
         say('You do not have a %s.' % thing)
     else:
+        if obj.name == 'dinner':
+            say("""
+            You drop the dinner plates off on the dining table.
+            Your mother reaches for the remote control to turn off the TV.
+            You have a couple more minutes before dinner starts.
+            """)
         say('You drop the %s.' % obj)
         current_room.items.add(obj)
 
