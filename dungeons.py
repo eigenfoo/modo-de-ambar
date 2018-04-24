@@ -819,62 +819,95 @@ def dungeon15():
 
 def dungeon16():
     room1 = Room("""
-    You are in a {} room.
+    You stand in front of Grandma Muller's mahogany wall unit.
     """)
     room1.desc = """
-    asdf
+    Books are crammed into the unit's shelves. The Iliad,  \n
+    Atlas Shrugged, and The Brothers Karamazov jump out at you. \n
+    The middle shelf houses photos of five generations of Muller women. \n
+    A black and white photo in a pewter frame shows \n
+    a young woman wearing a large cartwheel hat covered \n
+    in feathers.
     """
 
     room2 = room1.east = Room("""
-    You are in a {} room.
+    You sit next to Grandma on her couch in the living room. \n
+    She has been working on Wednesday's crossword \n
+    for a few hours. She asks if you'd like to help her. \n
     """)
-    room1.desc = """
-    asdf
+    room2.desc = """
+    On the center table sits a ceramic vignette \n
+    of a mother and her two children. The son, an infant, \n
+    is cradled in her arms. The daughter fawns over the son \n
+    from her mother's side. 
     """
+    pen = Item('pen')
+    room2.items = Bag({pen})
 
     room3 = room1.north = Room("""
-    You are in a {} room.
+    You step into the foyer
     """)
-    room1.desc = """
-    asdf
+    room3.desc = """
+    Next to the front door hangs a wicker knot tied in Savannah. \n
+    Beneath the knot is a basket filled with balls made of China. \n
+    Each is speckled with a distinct pattern, deep blue and cracked white. 
     """
 
     room4 = room3.west = Room("""
-    You are in a {} room.
+    You walk to the window in Grandma's kitchen \n
+    and look out at the Henry Hudson Parkway. \n 
+    The smell of stale cigarettes hangs in the air.
     """)
-    room1.desc = """
-    asdf
+    room4.desc = """
+    A tea bag, a spoon, a bowl of sugar, and a ceramic cup \n
+    are set up on the kitchen counter for tomorrow morning. \n
+    The cup is stained brown on the inside from years of service. \n
+    Its sides are dotted with soft pink roses \n
+    flowering off a green vine. \n
+    This week’s tea is Twinings Ceylon Orange Pekoe.
     """
 
     room5 = room3.north = Room("""
-    You are in a {} room.
+    You step into a short hallway. A mirror hangs at the far end.
     """)
-    room1.desc = """
-    asdf
+    room5.desc = """
+    You've looked better.
     """
 
     room6 = room5.east = Room("""
-    You are in a {} room.
+    You proceed down a long hallway
     """)
-    room1.desc = """
-    asdf
+    room6.desc = """
+    To the right is Grandma's bedroom. \n
+    The door is closed. \n 
+    You're not allowed to go there.
     """
 
     room7 = room6.north = Room("""
-    You are in a {} room.
+    You go into the bathroom. It's painted \n 
+    dark grey with white accents.
     """)
-    room1.desc = """
-    asdf
+    room7.desc = """
+    The bathroom's wooden door is cracked and \n
+    no longer fits in the door frame. \n
+    The shower curtain is made of clear plastic. Through it \n 
+    you can see a shower cap, a loofah, and Dove body wash. 
     """
-    foo = Item('foobar')
-    room7.items = Bag({foo})
 
     room8 = room6.east = Room("""
-    You are in a {} room.
+    You creep into Grandma's bedroom. The blinds are drawn. \n
+    A small painting hangs on the wall next to the \n
+    door of the bedroom.
     """)
-    room1.desc = """
-    asdf
+    room8.desc = """
+    The paint near the windows has chipped \n
+    due to the rain that seeped in during the hurricane. \n
+    There is a small shelf hung on each side of Grandma's bed, \n
+    each supporting a small statuette of a child \n
+    riding a merry-go-round horse. 
     """
+    small_painting = Item('small painting')
+    room8.items = Bag({small_painting})
 
     wait = room8.east = Room("""
     You are in a waiting room.

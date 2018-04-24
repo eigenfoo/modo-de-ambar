@@ -215,15 +215,42 @@ def fishing_station():
 
     return s1, s2
 
+def pen():
+    s1 = """
+    Grandma hands you her Porsche pen. The pen is heavy  \n
+    and warm where she held it. Stainless \n
+    steel spokes twist around its body. You fill in \n
+    53 Across: \n
+    P-I-K-M-I-N 
+    """
+
+    s2 = ""
+
+    return s1, s2
+
+def small_painting():
+    s1 = """
+    The painting depicts a young girl standing in a garden. \n
+    She has long red curls and bright red blush \n
+    on both cheeks. She dangles a teddy bear by the arm \n
+    with her right hand. She stares at you with a quizzical look.
+    """
+
+    s2 = ""
+
+    return s1, s2
+
 
 items = \
     ['Dad', 'dinner', 'framed photograph', 'music box',
      'phone', 'friend', 'shower', 'towel', 'soap', 'toothbrush', 'toothpaste',
      'sink', 'pair of shoes',
-     'rope', 'backpack', 'anchor', 'fishing rod', 'fishing station']
+     'rope', 'backpack', 'anchor', 'fishing rod', 'fishing station', 
+     'pen', 'small painting']
 
 
 helper_funcs = \
     [dad, dinner, photo, music_box,
      phone, friend, shower, towel, soap, toothbrush, toothpaste, sink, shoes,
-     rope, backpack, anchor, fishing_rod, fishing_station]
+     rope, backpack, anchor, fishing_rod, fishing_station, 
+     pen, small_painting]
