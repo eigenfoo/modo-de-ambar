@@ -3,10 +3,10 @@ import sys
 import subprocess
 from threading import Timer
 from random import randint
-from make_dungeons import (dungeon01, dungeon05, dungeon09, dungeon13,
-                           dungeon02, dungeon06, dungeon10, dungeon14,
-                           dungeon03, dungeon07, dungeon11, dungeon15,
-                           dungeon04, dungeon08, dungeon12, dungeon16)
+from dungeons import (dungeon01, dungeon05, dungeon09, dungeon13,
+                      dungeon02, dungeon06, dungeon10, dungeon14,
+                      dungeon03, dungeon07, dungeon11, dungeon15,
+                      dungeon04, dungeon08, dungeon12, dungeon16)
 import interactions
 from adventurelib import (when, start, Room, Item, Bag,
                           say, set_context, get_context)
