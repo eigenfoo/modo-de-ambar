@@ -8,38 +8,38 @@ COLORS = range(9)
 def dungeon01():
     ''' George '''
 
-    room1 = Room("""You enter your home.""")
+    room1 = Room("You enter your home.")
     room1.desc = """
-    Going abroad for college, you don’t really get to go home much. Most of\n
-    your friends take a two or three hour train ride back to home, but it’s a\n
-    16 hour flight for you.
+    Going abroad for college, you don’t really get to go home much.
+    Most of your friends take a two or three hour train ride back to home,
+    but it’s a 16 hour flight for you.
 
-    You’ve spent 18 years of your life in this home of homes, and one day you\n
-    packed your life into a suitcase and left. That’s how you left home, and\n
-    that’s how you come back to it: with a suitcase.
+    You’ve spent 18 years of your life in this home of homes, and one day
+    you packed your life into a suitcase and left. That’s how you left home,
+    and that’s how you come back to it: with a suitcase.
     """
 
     room2 = room1.west = Room("""
-    The dining table is set for dinner.\n
+    The dining table is set for dinner.
     Your mom is sitting watching the evening news on TV.
     """)
     room2.desc = """
-    You mentally tune out the news.\n
-    Something about more demonstrations and protests.\n
-    You get so tired of the politicking that goes on here sometimes.
-    """
+     You mentally tune out the news.
+     Something about more demonstrations and protests.
+     You get so tired of the politicking that goes on here sometimes.
+     """
     room2.dinner = False
 
     room3 = room2.west = Room("""
-    The hallway is dark.\n
-    You turn on the lights, which throws amber light\n
+    The hallway is dark.
+    You turn on the lights, which throws amber light
     on what would otherwise been bare white walls.
     """)
     room3.desc = """
-    You’ve always thought that the walls should be decorated.\n
-    Perhaps photos of dad, you think.\n
-    He’s always the one taking photos, he always insists on it,\n
-    but that means that no one takes photos of him.\n
+    You’ve always thought that the walls should be decorated.
+    Perhaps photos of dad, you think.
+    He’s always the one taking photos, he always insists on it,
+    but that means that no one takes photos of him.
     It’d be nice to see a photo of him.
     """
 
@@ -47,8 +47,8 @@ def dungeon01():
     You enter your dad’s study.
     """)
     room6.desc = """
-    The study is dark, but the light from the corridor pierces through\n
-    the hinges of the door and collides into the bookshelf.\n
+    The study is dark, but the light from the corridor pierces through
+    the hinges of the door and collides into the bookshelf.
     It reflects off something, startling you.
     """
     photo = Item('framed photograph')
@@ -59,8 +59,8 @@ def dungeon01():
     """)
     room7.desc = """
     It’s dark and cold.
-    The lights are off, and your dad never turns off the air conditioning.\n
-    The imperturbable blue light in corner of the ceiling stares back at you,\n
+    The lights are off, and your dad never turns off the air conditioning.
+    The imperturbable blue light in corner of the ceiling stares back at you,
     as it continues to blow cold air into the room.
     """
 
@@ -68,12 +68,12 @@ def dungeon01():
     You enter your helper’s room.
     """)
     room4.desc = """
-    It’s by far the smallest of the rooms, and the most full of stuff.\n
-    Growing up, you never really understood that domestic helpers weren’t common\n
-    in other parts of the world...\n
-    In fact, thinking about it now, it’s a bit strange\n
-    to let someone else into your home\n
-    and treat them basically as part of the family,\n
+    It’s by far the smallest of the rooms, and the most full of stuff.
+    Growing up, you never really understood that domestic helpers weren’t common
+    in other parts of the world...
+    In fact, thinking about it now, it’s a bit strange
+    to let someone else into your home
+    and treat them basically as part of the family,
     but that they’re under your employ.
     """
 
@@ -82,24 +82,26 @@ def dungeon01():
     """)
     room5.desc = """
     It’s your room.
-    You can navigate even though its black as death.\n
-    It’s pretty simple to navigate though,\n
-    your dad made sure the bookshelf was placed in a way\n
+    You can navigate even though its black as death.
+    It’s pretty simple to navigate though,
+    your dad made sure the bookshelf was placed in a way
     to make sure you wouldn’t accidentally hurt yourself.
     """
+
     music_box = Item('music box')
     room5.items = Bag({music_box})
 
     room8 = room1.north = Room("""
-    You move into the kitchen.\n
-    Your dad is cooking.\n
+    You move into the kitchen.
+    Your dad is cooking.
     It smells wonderful, as always.
     """)
     room8.desc = """
-    A beef stew with salad: one of your dad’s specials.\n
-    The smell of lovingly caramelized beef and delightfully cooked vegetables\n
+    A beef stew with salad: one of your dad’s specials.
+    The smell of lovingly caramelized beef and delightfully cooked vegetables
     envelops the kitchen as your dad plates up the food.
     """
+
     dad = Item('Dad')
     dinner = Item('dinner')
     room8.items = Bag({dad, dinner})
@@ -164,8 +166,8 @@ def dungeon03():
     The boat is shaking quite vigorously.
     """)
     room1.desc = """
-    You hope the dramamine that you took last night will help fight off the \n
-    motion sickness. Your friend and his mom are also on the boat.\n
+    You hope the dramamine that you took last night will help fight off the 
+    motion sickness. Your friend and his mom are also on the boat.
     The captain is mumbling something incomprehensible in the corner.
     """
 
@@ -199,9 +201,9 @@ def dungeon03():
     This is the left side of the boat.
     """)
     room5.desc = """
-    You can barely see the shores of Anchorage.\n
-    Seagulls fly over the boat.\n
-    Your friend is staring off into the distance with his fishing rod.\n
+    You can barely see the shores of Anchorage.
+    Seagulls fly over the boat.
+    Your friend is staring off into the distance with his fishing rod.
     Maybe he’s thinking of home?
     """
 
@@ -334,8 +336,8 @@ def dungeon06():
     You wake up to the faint smell of morning air.
     """)
     room1.desc = """
-    The ambient snoring of your friend fills the room.\n
-    It suddenly dawns upon you that you are in an AirBnb in Kyoto.\n
+    The ambient snoring of your friend fills the room.
+    It suddenly dawns upon you that you are in an AirBnb in Kyoto.
     You should probably get ready and prepare for a full day of adventuring.
     """
     phone = Item('phone')
@@ -346,8 +348,8 @@ def dungeon06():
     The sliding door to the balcony is slightly ajar.
     """)
     room2.desc = """
-    The dawn light streams through the curtains in a surreal manner.\n
-    The buildings of Kyoto stand proud against the horizon.\n
+    The dawn light streams through the curtains in a surreal manner.
+    The buildings of Kyoto stand proud against the horizon.
     A chilly breeze continuously enters the room from beyond the balcony.
     """
 
@@ -355,9 +357,9 @@ def dungeon06():
     You open the sliding door and step onto the balcony.
     """)
     room3.desc = """
-    It isn’t such a windy day today, thankfully.\n
-    You were lucky with this AirBnb, the view is incredible.\n
-    You can see all the way to the river.\n
+    It isn’t such a windy day today, thankfully.
+    You were lucky with this AirBnb, the view is incredible.
+    You can see all the way to the river.
     Perhaps today would be a good day to go to the Kyoto Animation Store.
     """
 
@@ -372,8 +374,8 @@ def dungeon06():
     The bathroom is pretty small.
     """)
     room5.desc = """
-    In fact, the entire room is the shower room.\n
-    The plumbing is amazing though.\n
+    In fact, the entire room is the shower room.
+    The plumbing is amazing though.
     The shower is hot and has high water pressure.
     """
     shower = Item('shower')
@@ -385,7 +387,7 @@ def dungeon06():
     The kitchen area is pretty small.
     """)
     room6.desc = """
-    There’s barely enough space for 1 stove burner and a tiny sink.\n
+    There’s barely enough space for 1 stove burner and a tiny sink.
     This is where the two of you store your toothbrushes.
     """
     toothbrush = Item('toothbrush')
@@ -822,23 +824,23 @@ def dungeon16():
     You stand in front of Grandma Muller's mahogany wall unit.
     """)
     room1.desc = """
-    Books are crammed into the unit's shelves. The Iliad,  \n
-    Atlas Shrugged, and The Brothers Karamazov jump out at you. \n
-    The middle shelf houses photos of five generations of Muller women. \n
-    A black and white photo in a pewter frame shows \n
-    a young woman wearing a large cartwheel hat covered \n
+    Books are crammed into the unit's shelves. The Iliad,  
+    Atlas Shrugged, and The Brothers Karamazov jump out at you. 
+    The middle shelf houses photos of five generations of Muller women. 
+    A black and white photo in a pewter frame shows 
+    a young woman wearing a large cartwheel hat covered 
     in feathers.
     """
 
     room2 = room1.east = Room("""
-    You sit next to Grandma on her couch in the living room. \n
-    She has been working on Wednesday's crossword \n
-    for a few hours. She asks if you'd like to help her. \n
+    You sit next to Grandma on her couch in the living room. 
+    She has been working on Wednesday's crossword 
+    for a few hours. She asks if you'd like to help her. 
     """)
     room2.desc = """
-    On the center table sits a ceramic vignette \n
-    of a mother and her two children. The son, an infant, \n
-    is cradled in her arms. The daughter fawns over the son \n
+    On the center table sits a ceramic vignette 
+    of a mother and her two children. The son, an infant, 
+    is cradled in her arms. The daughter fawns over the son 
     from her mother's side.
     """
     pen = Item('pen')
@@ -848,22 +850,22 @@ def dungeon16():
     You step into the foyer
     """)
     room3.desc = """
-    Next to the front door hangs a wicker knot tied in Savannah. \n
-    Beneath the knot is a basket filled with balls made of China. \n
+    Next to the front door hangs a wicker knot tied in Savannah. 
+    Beneath the knot is a basket filled with balls made of China. 
     Each is speckled with a distinct pattern, deep blue and cracked white.
     """
 
     room4 = room3.west = Room("""
-    You walk to the window in Grandma's kitchen \n
-    and look out at the Henry Hudson Parkway. \n
+    You walk to the window in Grandma's kitchen 
+    and look out at the Henry Hudson Parkway. 
     The smell of stale cigarettes hangs in the air.
     """)
     room4.desc = """
-    A tea bag, a spoon, a bowl of sugar, and a ceramic cup \n
-    are set up on the kitchen counter for tomorrow morning. \n
-    The cup is stained brown on the inside from years of service. \n
-    Its sides are dotted with soft pink roses \n
-    flowering off a green vine. \n
+    A tea bag, a spoon, a bowl of sugar, and a ceramic cup 
+    are set up on the kitchen counter for tomorrow morning. 
+    The cup is stained brown on the inside from years of service. 
+    Its sides are dotted with soft pink roses 
+    flowering off a green vine. 
     This week’s tea is Twinings Ceylon Orange Pekoe.
     """
 
@@ -878,32 +880,32 @@ def dungeon16():
     You proceed down a long hallway
     """)
     room6.desc = """
-    To the right is Grandma's bedroom. \n
-    The door is closed. \n
+    To the right is Grandma's bedroom. 
+    The door is closed. 
     You're not allowed to go there.
     """
 
     room7 = room6.north = Room("""
-    You go into the bathroom. It's painted \n
+    You go into the bathroom. It's painted 
     dark grey with white accents.
     """)
     room7.desc = """
-    The bathroom's wooden door is cracked and \n
-    no longer fits in the door frame. \n
-    The shower curtain is made of clear plastic. Through it \n
+    The bathroom's wooden door is cracked and 
+    no longer fits in the door frame. 
+    The shower curtain is made of clear plastic. Through it 
     you can see a shower cap, a loofah, and Dove body wash.
     """
 
     room8 = room6.east = Room("""
-    You creep into Grandma's bedroom. The blinds are drawn. \n
-    A small painting hangs on the wall next to the \n
+    You creep into Grandma's bedroom. The blinds are drawn. 
+    A small painting hangs on the wall next to the 
     door of the bedroom.
     """)
     room8.desc = """
-    The paint near the windows has chipped \n
-    due to the rain that seeped in during the hurricane. \n
-    There is a small shelf hung on each side of Grandma's bed, \n
-    each supporting a small statuette of a child \n
+    The paint near the windows has chipped 
+    due to the rain that seeped in during the hurricane. 
+    There is a small shelf hung on each side of Grandma's bed, 
+    each supporting a small statuette of a child 
     riding a merry-go-round horse.
     """
     small_painting = Item('small painting')

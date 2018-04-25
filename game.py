@@ -23,11 +23,11 @@ possible_dungeons = [dungeon01, dungeon05, dungeon09, dungeon13,
 
 
 room11, room12, room13, room14, room15, room16, room17, room18, \
-    wait1, exit_dir1 = dungeon16()
+    wait1, exit_dir1 = dungeon01()
 room21, room22, room23, room24, room25, room26, room27, room28, \
     wait2, exit_dir2 = dungeon03()
 room31, room32, room33, room34, room35, room36, room37, room38, \
-    wait3, exit_dir3 = dungeon06()
+    wait3, exit_dir3 = dungeon16()
 
 win_room = Room("You win!")
 
@@ -56,6 +56,12 @@ def go(direction):
         say('You are about to leave this dungeon.')
         ans = input("Are you sure? (y/N) ")
         if ans == 'y':
+            subproc_gen = subprocess.Popen(['sh', 'call_generate.sh'],
+                                           stdin=None,
+                                           stdout=None,
+                                           stderr=open('mini_canne/nil.txt'),
+                                           close_fds=True)
+            subprocesses['generate'] = subproc_gen
             pass
         else:
             say('You choose not to leave just yet.')
@@ -144,7 +150,7 @@ def brief_look():
 
 @when('look')
 def look():
-    say(current_room.desc)
+    print(current_room.desc)
     print('')
 
 
