@@ -292,14 +292,6 @@ def wait():
 
 
 if __name__ == '__main__':
-    proc = subprocess.Popen(['python', 'train.py',
-                             '--corpus=lyre', '--learning_rate=1e-3',
-                             '--new_init=False', '--loss_function=sc'],
-                            shell=True,
-                            stdin=None,
-                            stdout=None,
-                            stderr=None,
-                            close_fds=True)
     os.system('clear')
     brief_look()
     print('')
