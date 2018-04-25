@@ -107,6 +107,7 @@ def dungeon01():
     wait = room8.east = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'east'
 
@@ -151,6 +152,7 @@ def dungeon02():
     wait = room8.north = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'north'
 
@@ -233,6 +235,7 @@ def dungeon03():
     wait = room8.west = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'west'
 
@@ -277,6 +280,7 @@ def dungeon04():
     wait = room8.south = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'south'
 
@@ -321,6 +325,7 @@ def dungeon05():
     wait = room8.east = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'east'
 
@@ -413,6 +418,7 @@ def dungeon06():
     wait = room8.south = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'south'
 
@@ -457,6 +463,7 @@ def dungeon07():
     wait = room8.east = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'east'
 
@@ -501,6 +508,7 @@ def dungeon08():
     wait = room8.south = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'south'
 
@@ -545,6 +553,7 @@ def dungeon09():
     wait = room8.north = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'north'
 
@@ -589,6 +598,7 @@ def dungeon10():
     wait = room8.south = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'south'
 
@@ -633,6 +643,7 @@ def dungeon11():
     wait = room8.east = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'east'
 
@@ -677,6 +688,7 @@ def dungeon12():
     wait = room8.east = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'east'
 
@@ -721,6 +733,7 @@ def dungeon13():
     wait = room8.south = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'south'
 
@@ -765,6 +778,7 @@ def dungeon14():
     wait = room8.south = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'south'
 
@@ -809,6 +823,7 @@ def dungeon15():
     wait = room8.east = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'east'
 
@@ -912,6 +927,7 @@ def dungeon16():
     wait = room8.east = Room("""
     You are in a waiting room.
     """)
+    wait.desc = "You must wait!"
 
     exit_dir = 'east'
 
