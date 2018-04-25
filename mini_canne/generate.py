@@ -1,6 +1,5 @@
-import sys
-from mini_canne import *
-import os
+import numpy as np
+from mini_canne import OperationMode, ANNeSynth
 import argparse
 
 mode = OperationMode(train=True, new_init=False, control=False)

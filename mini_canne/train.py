@@ -1,6 +1,4 @@
-import sys
-from mini_canne import *
-import os
+from mini_canne import OperationMode, ANNeSynth
 import argparse
 
 

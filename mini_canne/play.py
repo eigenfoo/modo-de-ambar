@@ -1,6 +1,3 @@
-import sys
-from mini_canne import *
-import os
 import pygame
 import time
 
