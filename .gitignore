@@ -1,5 +1,9 @@
+# Project-specific #
+####################
+# don't commit model checkpoints, .npy frames or metrics log file
 checkpoints/
 *.npy
+metrics.txt
 
 # Compiled source #
 ###################
