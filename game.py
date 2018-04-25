@@ -277,11 +277,14 @@ def wait():
     if current_room == wait1:
         current_room = room21
         say('You find yourself in another dungeon.')
+        brief_look()
     elif current_room == wait2:
         current_room = room31
         say('You find yourself in another dungeon.')
+        brief_look()
     elif current_room == wait3:
         current_room = win_room
+        brief_look()
         say('You win!')
         sys.exit(0)
 
