@@ -1,3 +1,6 @@
+checkpoints/
+*.npy
+
 # Compiled source #
 ###################
 *.com

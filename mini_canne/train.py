@@ -15,7 +15,7 @@ def get_arguments():
 def main():
 	args = get_arguments()
 	mode = OperationMode(train=True,new_init=args.new_init,control=False)
-	synth = ANNeSynth(mode,corpus=args.corpus+'_frames.npy',loss_choice=args.loss_function)
+	synth = ANNeSynth(mode,corpus='corpora/'+args.corpus+'_frames.npy',loss_choice=args.loss_function)
 	synth.execute([])
 	
 	
