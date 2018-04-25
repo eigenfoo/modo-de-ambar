@@ -224,8 +224,5 @@ if __name__ == '__main__':
         print('')
         start()
     finally:
-        for name, subproc in subprocesses.items():
-            try:
-                subproc.kill()
-            except AttributeError:
-                continue
+        # Kill all python processes to stop play, train and generate
+        subprocess.call(['pkill', '-9', 'python'])
