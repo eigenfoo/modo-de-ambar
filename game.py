@@ -31,9 +31,7 @@ room21, room22, room23, room24, room25, room26, room27, room28, \
 room31, room32, room33, room34, room35, room36, room37, room38, \
     wait3, exit_dir3 = dungeon06()
 
-win_room = Room("""
-You win!
-""")
+win_room = Room("You win!")
 
 last_rooms = [(room18, exit_dir1), (room28, exit_dir2), (room38, exit_dir3)]
 waits = [wait1, wait2, wait3]
@@ -292,15 +290,15 @@ def wait():
 
 
 if __name__ == '__main__':
-    proc = subprocess.Popen(['python', 'train.py',
-                             '--corpus=lyre', '--learning_rate=1e-3',
-                             '--new_init=False', '--loss_function=sc'],
-                            shell=True,
-                            stdin=None,
-                            stdout=None,
-                            stderr=None,
-                            close_fds=True)
-    os.system('clear')
-    brief_look()
-    print('')
-    start()
+    try:
+        proc = subprocess.Popen(['sh', 'train.sh'],
+                                stdin=None,
+                                stdout=None,
+                                stderr=open('mini_canne/nil.txt'),
+                                close_fds=True)
+        os.system('clear')
+        brief_look()
+        print('')
+        start()
+    finally:
+        proc.kill()
