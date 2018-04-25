@@ -13,7 +13,7 @@ def dungeon01():
     Going abroad for college, you don’t really get to go home much. Most of\n
     your friends take a two or three hour train ride back to home, but it’s a\n
     16 hour flight for you.
-    
+
     You’ve spent 18 years of your life in this home of homes, and one day you\n
     packed your life into a suitcase and left. That’s how you left home, and\n
     that’s how you come back to it: with a suitcase.
@@ -102,7 +102,7 @@ def dungeon01():
     """
     dad = Item('Dad')
     dinner = Item('dinner')
-    room8.items  = Bag({dad, dinner})
+    room8.items = Bag({dad, dinner})
 
     wait = room8.east = Room("""
     You are in a waiting room.
@@ -113,7 +113,6 @@ def dungeon01():
 
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
-
 
 
 def dungeon02():
@@ -158,7 +157,6 @@ def dungeon02():
 
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
-
 
 
 def dungeon03():
@@ -243,7 +241,6 @@ def dungeon03():
             wait, exit_dir]
 
 
-
 def dungeon04():
     room1 = Room("""
     You are in a {} room.
@@ -286,7 +283,6 @@ def dungeon04():
 
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
-
 
 
 def dungeon05():
@@ -333,7 +329,6 @@ def dungeon05():
             wait, exit_dir]
 
 
-
 def dungeon06():
     room1 = Room("""
     You wake up to the faint smell of morning air.
@@ -363,7 +358,7 @@ def dungeon06():
     It isn’t such a windy day today, thankfully.\n
     You were lucky with this AirBnb, the view is incredible.\n
     You can see all the way to the river.\n
-    Perhaps today would be a good day to go to the Kyoto Animation Store. 
+    Perhaps today would be a good day to go to the Kyoto Animation Store.
     """
 
     room4 = room3.west = Room("""
@@ -403,7 +398,7 @@ def dungeon06():
     """)
     room7.desc = """
     Strangely, this part of the apartment doesn’t have lights.
-    How peculiar. 
+    How peculiar.
     """
 
     room8 = room7.east = Room("""
@@ -424,7 +419,6 @@ def dungeon06():
 
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
-
 
 
 def dungeon07():
@@ -471,7 +465,6 @@ def dungeon07():
             wait, exit_dir]
 
 
-
 def dungeon08():
     room1 = Room("""
     You are in a {} room.
@@ -514,7 +507,6 @@ def dungeon08():
 
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
-
 
 
 def dungeon09():
@@ -561,7 +553,6 @@ def dungeon09():
             wait, exit_dir]
 
 
-
 def dungeon10():
     room1 = Room("""
     You are in a {} room.
@@ -604,7 +595,6 @@ def dungeon10():
 
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
-
 
 
 def dungeon11():
@@ -651,7 +641,6 @@ def dungeon11():
             wait, exit_dir]
 
 
-
 def dungeon12():
     room1 = Room("""
     You are in a {} room.
@@ -694,7 +683,6 @@ def dungeon12():
 
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
-
 
 
 def dungeon13():
@@ -741,7 +729,6 @@ def dungeon13():
             wait, exit_dir]
 
 
-
 def dungeon14():
     room1 = Room("""
     You are in a {} room.
@@ -784,7 +771,6 @@ def dungeon14():
 
     return [room1, room2, room3, room4, room5, room6, room7, room8,
             wait, exit_dir]
-
 
 
 def dungeon15():
@@ -831,7 +817,6 @@ def dungeon15():
             wait, exit_dir]
 
 
-
 def dungeon16():
     room1 = Room("""
     You stand in front of Grandma Muller's mahogany wall unit.
@@ -854,7 +839,7 @@ def dungeon16():
     On the center table sits a ceramic vignette \n
     of a mother and her two children. The son, an infant, \n
     is cradled in her arms. The daughter fawns over the son \n
-    from her mother's side. 
+    from her mother's side.
     """
     pen = Item('pen')
     room2.items = Bag({pen})
@@ -865,12 +850,12 @@ def dungeon16():
     room3.desc = """
     Next to the front door hangs a wicker knot tied in Savannah. \n
     Beneath the knot is a basket filled with balls made of China. \n
-    Each is speckled with a distinct pattern, deep blue and cracked white. 
+    Each is speckled with a distinct pattern, deep blue and cracked white.
     """
 
     room4 = room3.west = Room("""
     You walk to the window in Grandma's kitchen \n
-    and look out at the Henry Hudson Parkway. \n 
+    and look out at the Henry Hudson Parkway. \n
     The smell of stale cigarettes hangs in the air.
     """)
     room4.desc = """
@@ -894,19 +879,19 @@ def dungeon16():
     """)
     room6.desc = """
     To the right is Grandma's bedroom. \n
-    The door is closed. \n 
+    The door is closed. \n
     You're not allowed to go there.
     """
 
     room7 = room6.north = Room("""
-    You go into the bathroom. It's painted \n 
+    You go into the bathroom. It's painted \n
     dark grey with white accents.
     """)
     room7.desc = """
     The bathroom's wooden door is cracked and \n
     no longer fits in the door frame. \n
-    The shower curtain is made of clear plastic. Through it \n 
-    you can see a shower cap, a loofah, and Dove body wash. 
+    The shower curtain is made of clear plastic. Through it \n
+    you can see a shower cap, a loofah, and Dove body wash.
     """
 
     room8 = room6.east = Room("""
@@ -919,7 +904,7 @@ def dungeon16():
     due to the rain that seeped in during the hurricane. \n
     There is a small shelf hung on each side of Grandma's bed, \n
     each supporting a small statuette of a child \n
-    riding a merry-go-round horse. 
+    riding a merry-go-round horse.
     """
     small_painting = Item('small painting')
     room8.items = Bag({small_painting})

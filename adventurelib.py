@@ -123,6 +123,7 @@ class InvalidDirection(Exception):
 
 class Placeholder:
     """Match a word in a command string."""
+
     def __init__(self, name):
         self.name = name
 
@@ -224,6 +225,7 @@ class Bag(set):
     by name.
 
     """
+
     def find(self, name):
         """Find an object in the bag by name, but do not remove it.
 

@@ -1,6 +1,7 @@
 from adventurelib import (when, start, Room, Item, Bag,
                           say, set_context, get_context)
 
+
 def dad():
     s1 = """
     Your dad chastises you for standing around, taking up space in the kitchen.\n
@@ -78,7 +79,7 @@ def friend():
     """
 
     s2 = " "
-    
+
     return s1, s2
 
 
@@ -124,6 +125,7 @@ def toothbrush():
 
     return s1, s2
 
+
 def toothpaste():
     s1 = """
     A small tube of travel sized toothpaste.
@@ -138,7 +140,7 @@ def sink():
     s1 = """
     You take 2 minutes to brush your teeth.\n
     This is not the electric toothbrush you are used to.\n
-    Your hand feels slightly out of shape. 
+    Your hand feels slightly out of shape.
     """
 
     s2 = "You finish brushing your teeth."
@@ -150,7 +152,7 @@ def shoes():
     s1 = """
     You slip into your very worn Nike Monarchs.
     """
-    
+
     s2 = ""
 
     return s1, s2
@@ -179,7 +181,7 @@ def backpack():
 def anchor():
     s1 = """
     Seems important.\n
-    Large heavy and connected by a thick chain. 
+    Large heavy and connected by a thick chain.
     """
 
     s2 = ""
@@ -193,7 +195,7 @@ def fishing_rod():
     It’s heavy and has many complicated levers.\n
     You should probably find an instructor to use it.
     """
-    
+
     s2 = ""
 
     return s1, s2
@@ -210,10 +212,11 @@ def fishing_station():
     and quickly throws it into the storage bellow.\n
     You catch a slightly smaller flounder.\n
     The captain just gaffs it and throws it into storage.\n
-    You both safely return to Anchorage. 
+    You both safely return to Anchorage.
     """
 
     return s1, s2
+
 
 def pen():
     s1 = """
@@ -221,12 +224,13 @@ def pen():
     and warm where she held it. Stainless \n
     steel spokes twist around its body. You fill in \n
     53 Across: \n
-    P-I-K-M-I-N 
+    P-I-K-M-I-N
     """
 
     s2 = ""
 
     return s1, s2
+
 
 def small_painting():
     s1 = """
@@ -245,12 +249,12 @@ items = \
     ['Dad', 'dinner', 'framed photograph', 'music box',
      'phone', 'friend', 'shower', 'towel', 'soap', 'toothbrush', 'toothpaste',
      'sink', 'pair of shoes',
-     'rope', 'backpack', 'anchor', 'fishing rod', 'fishing station', 
+     'rope', 'backpack', 'anchor', 'fishing rod', 'fishing station',
      'pen', 'small painting']
 
 
 helper_funcs = \
     [dad, dinner, photo, music_box,
      phone, friend, shower, towel, soap, toothbrush, toothpaste, sink, shoes,
-     rope, backpack, anchor, fishing_rod, fishing_station, 
+     rope, backpack, anchor, fishing_rod, fishing_station,
      pen, small_painting]
