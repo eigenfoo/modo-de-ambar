@@ -1,8 +1,6 @@
 import os
 import sys
 import subprocess
-from threading import Timer
-from random import randint
 from dungeons import (dungeon01, dungeon05, dungeon09, dungeon13,
                       dungeon02, dungeon06, dungeon10, dungeon14,
                       dungeon03, dungeon07, dungeon11, dungeon15,
@@ -31,9 +29,7 @@ room21, room22, room23, room24, room25, room26, room27, room28, \
 room31, room32, room33, room34, room35, room36, room37, room38, \
     wait3, exit_dir3 = dungeon06()
 
-win_room = Room("""
-You win!
-""")
+win_room = Room("You win!")
 
 last_rooms = [(room18, exit_dir1), (room28, exit_dir2), (room38, exit_dir3)]
 waits = [wait1, wait2, wait3]
@@ -169,9 +165,17 @@ def show_bag():
 
 @when('wait', context='wait')
 def wait():
-    ''' FIXME note that sl is a requirement, but NOT a python requirement '''
-    for i in range(2):
+    # FIXME note that sl is a requirement, but NOT a python requirement
+    subproc_gen = subprocess.Popen(['sh', 'call_generate.sh', '40', '2000'],
+                                   stdin=None,
+                                   stdout=None,
+                                   stderr=open('mini_canne/nil.txt'))
+    subprocesses['generate'] = subproc_gen
+
+    for _ in range(3):
         subprocess.call(['sl'])
+
+    subprocesses['generate'].kill()
 
     global current_room
     if current_room == wait1:
@@ -192,7 +196,28 @@ def wait():
 
 
 if __name__ == '__main__':
-    os.system('clear')
-    brief_look()
-    print('')
-    start()
+    subprocesses = {'train':    None,
+                    'generate': None,
+                    'play':     None}
+    try:
+        subproc_play = subprocess.Popen(['sh', 'call_play.sh'],
+                                        stdin=None,
+                                        stdout=None,
+                                        stderr=open('mini_canne/nil.txt'),
+                                        close_fds=True)
+        subprocesses['play'] = subproc_play
+        subproc_train = subprocess.Popen(['sh', 'call_train.sh',
+                                          'lyre', '1e-3', 'False', 'sc'],
+                                         stdin=None,
+                                         stdout=None,
+                                         stderr=open('mini_canne/nil.txt'),
+                                         close_fds=True)
+        subprocesses['train'] = subproc_train
+        os.system('clear')
+        brief_look()
+        print('')
+        start()
+    finally:
+        for name, subproc in subprocesses.items():
+            subproc.kill()
+        subprocess.call(['pkill', '-9', 'python'])
