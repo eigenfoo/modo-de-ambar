@@ -4,7 +4,7 @@ from adventurelib import (when, start, Room, Item, Bag,
 
 def dad():
     s1 = """
-    Your dad chastises you for standing around, taking up space in the kitchen.\n
+    Your dad chastises you for standing around, taking up space in the kitchen.
     He tells you to take the three plated dishes out to the dining room.
     """
 
@@ -15,8 +15,8 @@ def dad():
 
 def dinner():
     s1 = """
-    As you pick up the plate, you notice that the beef\n
-    has been cooked so well that it practically falls off the bone.\n
+    As you pick up the plate, you notice that the beef
+    has been cooked so well that it practically falls off the bone.
     Your mouth waters.
     """
 
@@ -27,11 +27,11 @@ def dinner():
 
 def photo():
     s1 = """
-    You inspect the photo for what must be the 100th time.\n
-    You’re sitting right in front of the camera, with a pudgy face, bald head\n
-    and distracted by something slightly to the left of the camera.\n
-    You know that your dad was the one who took the photo:\n
-    something about the way the photo is composed…\n
+    You inspect the photo for what must be the 100th time.
+    You’re sitting right in front of the camera, with a pudgy face, bald head
+    and distracted by something slightly to the left of the camera.
+    You know that your dad was the one who took the photo:
+    something about the way the photo is composed…
     Something possesses you to pocket the photo.
     """
 
@@ -42,13 +42,13 @@ def photo():
 
 def music_box():
     s1 = """
-    A gift from your dad.\n
-    You’ve always been amazed at how the clockwork manages\n
-    to produce not just one, but six\n
-    distinct classical melodies from its metal organs.\n
-    You still remember the day you realized that the gears\n
-    were beginning to rust, and that you couldn’t fix them\n
-    without shattering the glass.\n
+    A gift from your dad.
+    You’ve always been amazed at how the clockwork manages
+    to produce not just one, but six
+    distinct classical melodies from its metal organs.
+    You still remember the day you realized that the gears
+    were beginning to rust, and that you couldn’t fix them
+    without shattering the glass.
     That wasn’t a great day.
     """
 
@@ -59,11 +59,11 @@ def music_box():
 
 def phone():
     s1 = """
-    A black iPhone, plus model.\n
-    It has seen years of use which is apparent on the aluminum finish.\n
-    With its long battery life, it is sure to last an entire day’s sightseeing.\n
-    You’ve only been using it to take pictures of your vacation journey.\n
-    The excitement of being in a foreign country has eased\n
+    A black iPhone, plus model.
+    It has seen years of use which is apparent on the aluminum finish.
+    With its long battery life, it is sure to last an entire day’s sightseeing.
+    You’ve only been using it to take pictures of your vacation journey.
+    The excitement of being in a foreign country has eased
     your addiction to mobile games.
     """
 
@@ -74,7 +74,7 @@ def phone():
 
 def friend():
     s1 = """
-    You decide to wake up your friend.\n
+    You decide to wake up your friend.
     You need an early start to get the most out of exploring Kyoto today.
     """
 
@@ -95,7 +95,7 @@ def shower():
 
 def towel():
     s1 = """
-    A common white bath towel.\n
+    A common white bath towel.
     There is nothing special about it.
     """
 
@@ -106,8 +106,8 @@ def towel():
 
 def soap():
     s1 = """
-    Common bar soap.\n
-    There is nothing special about it,\n
+    Common bar soap.
+    There is nothing special about it,
     except for the slight fragrance of lavender.
     """
 
@@ -138,8 +138,8 @@ def toothpaste():
 
 def sink():
     s1 = """
-    You take 2 minutes to brush your teeth.\n
-    This is not the electric toothbrush you are used to.\n
+    You take 2 minutes to brush your teeth.
+    This is not the electric toothbrush you are used to.
     Your hand feels slightly out of shape.
     """
 
@@ -180,7 +180,7 @@ def backpack():
 
 def anchor():
     s1 = """
-    Seems important.\n
+    Seems important.
     Large heavy and connected by a thick chain.
     """
 
@@ -191,8 +191,8 @@ def anchor():
 
 def fishing_rod():
     s1 = """
-    A fishing rod dedicated to deep sea fishing.\n
-    It’s heavy and has many complicated levers.\n
+    A fishing rod dedicated to deep sea fishing.
+    It’s heavy and has many complicated levers.
     You should probably find an instructor to use it.
     """
 
@@ -207,11 +207,11 @@ def fishing_station():
     """
 
     s2 = """
-    Your friend catches a flounder first.\n
-    It’s a huge flounder, the captain shoots it\n
-    and quickly throws it into the storage bellow.\n
-    You catch a slightly smaller flounder.\n
-    The captain just gaffs it and throws it into storage.\n
+    Your friend catches a flounder first.
+    It’s a huge flounder, the captain shoots it
+    and quickly throws it into the storage bellow.
+    You catch a slightly smaller flounder.
+    The captain just gaffs it and throws it into storage.
     You both safely return to Anchorage.
     """
 
@@ -220,10 +220,10 @@ def fishing_station():
 
 def pen():
     s1 = """
-    Grandma hands you her Porsche pen. The pen is heavy  \n
-    and warm where she held it. Stainless \n
-    steel spokes twist around its body. You fill in \n
-    53 Across: \n
+    Grandma hands you her Porsche pen. The pen is heavy  
+    and warm where she held it. Stainless 
+    steel spokes twist around its body. You fill in 
+    53 Across: 
     P-I-K-M-I-N
     """
 
@@ -234,9 +234,9 @@ def pen():
 
 def small_painting():
     s1 = """
-    The painting depicts a young girl standing in a garden. \n
-    She has long red curls and bright red blush \n
-    on both cheeks. She dangles a teddy bear by the arm \n
+    The painting depicts a young girl standing in a garden. 
+    She has long red curls and bright red blush 
+    on both cheeks. She dangles a teddy bear by the arm 
     with her right hand. She stares at you with a quizzical look.
     """
 

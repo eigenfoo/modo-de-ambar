@@ -80,18 +80,19 @@ def go(direction):
 
 @when('take ITEM')
 def take(item):
+    # FIXME stop and start training!!
     obj = current_room.items.take(item)
 
     if obj:
         if obj.name in interactions.items:
             i = interactions.items.index(obj.name)
             s1, s2 = interactions.helper_funcs[i]()
-            say('{}'.format(s1))
+            print('{}'.format(s1))
             if s2:
                 print('')
-                say('{}'.format(s2))
+                print('{}'.format(s2))
             else:
-                say('You pick up the {}.'.format(item))
+                print('You pick up the {}.'.format(item))
             bag.add(obj)
         else:
             raise Exception("Item missing from interactions.py!!")
