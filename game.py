@@ -196,9 +196,9 @@ def wait():
 
 
 if __name__ == '__main__':
-    subprocesses = {'train':    None,
-                    'generate': None,
-                    'play':     None}
+    subprocesses = {'play':     None,
+                    'train':    None,
+                    'generate': None}
     try:
         subproc_play = subprocess.Popen(['sh', 'call_play.sh'],
                                         stdin=None,
@@ -219,5 +219,7 @@ if __name__ == '__main__':
         start()
     finally:
         for name, subproc in subprocesses.items():
-            subproc.kill()
-        subprocess.call(['pkill', '-9', 'python'])
+            try:
+                subproc.kill()
+            except AttributeError:
+                continue
