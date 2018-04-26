@@ -2,4 +2,7 @@
 # python play.py
 
 cd mini_canne/
-python play.py &
+echo "Play called" >> log
+date >> log
+echo "" >> log
+python play.py

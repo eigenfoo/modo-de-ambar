@@ -14,7 +14,6 @@ bag = Bag([])
 
 possible_dungeons = [dungeon01, dungeon02, dungeon03, dungeon04]
 
-
 room11, room12, room13, room14, room15, room16, room17, room18, \
     wait1, exit_dir1 = dungeon03()
 room21, room22, room23, room24, room25, room26, room27, room28, \
@@ -55,6 +54,9 @@ def go(direction):
                 print('You may only take two items with you!')
                 return
 
+            subprocesses['play'].kill()
+            subprocesses['play'].terminate()
+
             subprocesses['generate'] = subprocess.Popen(['sh',
                                                          'call_generate.sh',
                                                          '40',
@@ -63,7 +65,6 @@ def go(direction):
                                                         stdout=subprocess.PIPE,
                                                         stderr=open('mini_canne/nil.txt'),
                                                         close_fds=True)
-            pass
         else:
             say('You choose not to leave just yet.')
             return
@@ -84,7 +85,7 @@ def take(item):
     subprocesses['train'].kill()
     subprocesses['train'].terminate()
 
-    instrument = random.choice(['cello', 'guitar', 'didgeridoo', 'lyre'])
+    # instrument = random.choice(['cello', 'guitar', 'didgeridoo', 'lyre'])
     subprocesses['train'] = subprocess.Popen(['sh', 'call_train.sh',
                                               'cello', '1e-3', 'False', 'sc'],
                                              stdin=subprocess.PIPE,
@@ -172,13 +173,6 @@ def show_bag():
 @when('wait', context='wait')
 def wait():
     # FIXME note that sl is a requirement, but NOT a python requirement
-    subprocesses['play'].kill()
-    subprocesses['play'].terminate()
-    subprocesses['generate'] = subprocess.Popen(['sh', 'call_generate.sh', '40', '1500'],
-                                                stdin=subprocess.PIPE,
-                                                stdout=subprocess.PIPE,
-                                                stderr=open('mini_canne/nil.txt'))
-
     for _ in range(3):
         subprocess.call(['sl'])
 
@@ -218,6 +212,7 @@ if __name__ == '__main__':
                                                  stdout=subprocess.PIPE,
                                                  stderr=open('mini_canne/nil.txt'),
                                                  close_fds=True)
+
         os.system('clear')
         brief_look()
         print('')

@@ -3,10 +3,8 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from matplotlib import animation
 import os
 import librosa
-import sys
 import scipy as sci
 import soundfile as sf
 from time import time
