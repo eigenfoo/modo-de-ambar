@@ -54,8 +54,8 @@ def go(direction):
 
     if (current_room, direction) in last_rooms:
         say('You are about to leave this dungeon.')
-        ans = input("Are you sure? (y/N) ")
-        if ans == 'y':
+        ans = input("Are you sure? (yes/no) ")
+        if ans == 'yes':
             subproc_gen = subprocess.Popen(['sh', 'call_generate.sh'],
                                            stdin=None,
                                            stdout=None,
@@ -111,7 +111,7 @@ def drop(thing):
 
     obj = bag.take(thing)
     if not obj:
-        say('You do not have a %s.' % thing)
+        say('You do not have a {}.'.format(thing))
     else:
         if obj.name == 'dinner':
             say("""
@@ -119,7 +119,7 @@ def drop(thing):
             Your mother reaches for the remote control to turn off the TV.
             You have a couple more minutes before dinner starts.
             """)
-        say('You drop the %s.' % obj)
+        say('You drop the {}.'.format(obj))
         current_room.items.add(obj)
 
 
@@ -129,7 +129,7 @@ def brief_look():
 
     if current_room.items:
         for i in current_room.items:
-            say('A %s is here.' % i)
+            say('A \033[91m{}\033[0m is here.'.format(i))
 
     if 'north' in current_room.exits():
         print('      N\n      ^\n      |')
