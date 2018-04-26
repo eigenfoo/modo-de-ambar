@@ -1,6 +1,7 @@
 import os
 import sys
 import subprocess
+import random
 from dungeons import dungeon01, dungeon02, dungeon03, dungeon04
 import interactions
 from adventurelib import (when, start, Room, Item, Bag,
@@ -9,9 +10,7 @@ from adventurelib import (when, start, Room, Item, Bag,
 
 Room.items = Bag()
 
-food = Item('food')
-food.level = 10
-bag = Bag([food])
+bag = Bag([])
 
 possible_dungeons = [dungeon01, dungeon02, dungeon03, dungeon04]
 
@@ -51,12 +50,16 @@ def go(direction):
         say('You are about to leave this dungeon.')
         ans = input("Are you sure? (yes/no) ")
         if ans == 'yes':
-            subproc_gen = subprocess.Popen(['sh', 'call_generate.sh'],
-                                           stdin=None,
-                                           stdout=None,
-                                           stderr=open('mini_canne/nil.txt'),
-                                           close_fds=True)
-            subprocesses['generate'] = subproc_gen
+            if bag.num_items() > 2:
+                print('')
+                print('You may only take two items with you!')
+                return
+
+            subprocesses['generate'] = subprocess.Popen(['sh', 'call_generate.sh'],
+                                                        stdin=subprocess.PIPE,
+                                                        stdout=subprocess.PIPE,
+                                                        stderr=open('mini_canne/nil.txt'),
+                                                        close_fds=True)
             pass
         else:
             say('You choose not to leave just yet.')
@@ -75,9 +78,18 @@ def go(direction):
 
 @when('take ITEM')
 def take(item):
-    # FIXME stop and start training!!
-    obj = current_room.items.take(item)
+    subprocesses['train'].kill()
+    subprocesses['train'].terminate()
 
+    instrument = random.choice(['cello', 'guitar', 'didgeridoo', 'lyre'])
+    subprocesses['train'] = subprocess.Popen(['sh', 'call_train.sh',
+                                              instrument, '1e-3', 'False', 'sc'],
+                                             stdin=subprocess.PIPE,
+                                             stdout=subprocess.PIPE,
+                                             stderr=open('mini_canne/nil.txt'),
+                                             close_fds=True)
+
+    obj = current_room.items.take(item)
     if obj:
         if obj.name in interactions.items:
             i = interactions.items.index(obj.name)
@@ -97,17 +109,11 @@ def take(item):
 
 @when('drop THING')
 def drop(thing):
-    if thing == 'food':
-        say('You drop a food pack.')
-        food = bag.find('food')
-        food.level -= 1
-        current_room.items.add(Item('food pack'))
-        return
-
     obj = bag.take(thing)
     if not obj:
         say('You do not have a {}.'.format(thing))
     else:
+        # FIXME change training here!
         if obj.name == 'dinner':
             say("""
             You drop the dinner plates off on the dining table.
@@ -155,11 +161,7 @@ def show_bag():
         say('You open your bag.')
         say('You have:')
         for thing in bag:
-            if thing.name == 'food':
-                food = bag.find('food')
-                say('food: x{}'.format(food.level))
-            else:
-                say(thing)
+            say(thing)
     else:
         say('Your bag is empty!')
 
@@ -167,16 +169,18 @@ def show_bag():
 @when('wait', context='wait')
 def wait():
     # FIXME note that sl is a requirement, but NOT a python requirement
-    subproc_gen = subprocess.Popen(['sh', 'call_generate.sh', '40', '2000'],
-                                   stdin=None,
-                                   stdout=None,
-                                   stderr=open('mini_canne/nil.txt'))
-    subprocesses['generate'] = subproc_gen
+    subprocesses['play'].kill()
+    subprocesses['play'].terminate()
+    subprocesses['generate'] = subprocess.Popen(['sh', 'call_generate.sh', '40', '1500'],
+                                                stdin=subprocess.PIPE,
+                                                stdout=subprocess.PIPE,
+                                                stderr=open('mini_canne/nil.txt'))
 
     for _ in range(3):
         subprocess.call(['sl'])
 
     subprocesses['generate'].kill()
+    subprocesses['generate'].terminate()
 
     global current_room
     if current_room == wait1:
@@ -200,19 +204,17 @@ if __name__ == '__main__':
                     'train':    None,
                     'generate': None}
     try:
-        subproc_play = subprocess.Popen(['sh', 'call_play.sh'],
-                                        stdin=None,
-                                        stdout=None,
-                                        stderr=open('mini_canne/nil.txt'),
-                                        close_fds=True)
-        subprocesses['play'] = subproc_play
-        subproc_train = subprocess.Popen(['sh', 'call_train.sh',
-                                          'lyre', '1e-3', 'False', 'sc'],
-                                         stdin=None,
-                                         stdout=None,
-                                         stderr=open('mini_canne/nil.txt'),
-                                         close_fds=True)
-        subprocesses['train'] = subproc_train
+        subprocesses['play'] = subprocess.Popen(['sh', 'call_play.sh'],
+                                                stdin=subprocess.PIPE,
+                                                stdout=subprocess.PIPE,
+                                                stderr=open('mini_canne/nil.txt'),
+                                                close_fds=True)
+        subprocesses['train'] = subprocess.Popen(['sh', 'call_train.sh',
+                                                  'lyre', '1e-3', 'False', 'sc'],
+                                                 stdin=subprocess.PIPE,
+                                                 stdout=subprocess.PIPE,
+                                                 stderr=open('mini_canne/nil.txt'),
+                                                 close_fds=True)
         os.system('clear')
         brief_look()
         print('')

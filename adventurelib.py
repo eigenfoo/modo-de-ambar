@@ -225,6 +225,10 @@ class Bag(set):
     by name.
 
     """
+    def num_items(self):
+        """Returns the number of items in the bag.
+        """
+        return len(self)
 
     def find(self, name):
         """Find an object in the bag by name, but do not remove it.
