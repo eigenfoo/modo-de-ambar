@@ -25,8 +25,6 @@ room31, room32, room33, room34, room35, room36, room37, room38, \
 room41, room42, room43, room44, room45, room46, room47, room48, \
     wait4, exit_dir4 = dungeon04()
 
-win_room = Room("You win!")
-
 last_rooms = [(room18, exit_dir1), (room28, exit_dir2),
               (room38, exit_dir3), (room48, exit_dir4)]
 waits = [wait1, wait2, wait3, wait4]
@@ -183,18 +181,17 @@ def wait():
     global current_room
     if current_room == wait1:
         current_room = room21
-        say('You find yourself in another dungeon.')
-        brief_look()
     elif current_room == wait2:
         current_room = room31
-        say('You find yourself in another dungeon.')
-        brief_look()
     elif current_room == wait3:
-        current_room = win_room
-        brief_look()
-        say('You win!')
-        sys.exit(0)
+        current_room = room41
+    elif current_room == wait4:
+        current_room = room11
 
+    subprocess.call(['clear'])
+    say('You find yourself someplace else.')
+    print('')
+    brief_look()
     set_context('default')
 
 
