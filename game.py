@@ -1,10 +1,7 @@
 import os
 import sys
 import subprocess
-from dungeons import (dungeon01, dungeon05, dungeon09, dungeon13,
-                      dungeon02, dungeon06, dungeon10, dungeon14,
-                      dungeon03, dungeon07, dungeon11, dungeon15,
-                      dungeon04, dungeon08, dungeon12, dungeon16)
+from dungeons import dungeon01, dungeon02, dungeon03, dungeon04
 import interactions
 from adventurelib import (when, start, Room, Item, Bag,
                           say, set_context, get_context)
@@ -16,23 +13,23 @@ food = Item('food')
 food.level = 10
 bag = Bag([food])
 
-possible_dungeons = [dungeon01, dungeon05, dungeon09, dungeon13,
-                     dungeon02, dungeon06, dungeon10, dungeon14,
-                     dungeon03, dungeon07, dungeon11, dungeon15,
-                     dungeon04, dungeon08, dungeon12, dungeon16]
+possible_dungeons = [dungeon01, dungeon02, dungeon03, dungeon04]
 
 
 room11, room12, room13, room14, room15, room16, room17, room18, \
     wait1, exit_dir1 = dungeon01()
 room21, room22, room23, room24, room25, room26, room27, room28, \
-    wait2, exit_dir2 = dungeon03()
+    wait2, exit_dir2 = dungeon02()
 room31, room32, room33, room34, room35, room36, room37, room38, \
-    wait3, exit_dir3 = dungeon16()
+    wait3, exit_dir3 = dungeon03()
+room41, room42, room43, room44, room45, room46, room47, room48, \
+    wait4, exit_dir4 = dungeon04()
 
 win_room = Room("You win!")
 
-last_rooms = [(room18, exit_dir1), (room28, exit_dir2), (room38, exit_dir3)]
-waits = [wait1, wait2, wait3]
+last_rooms = [(room18, exit_dir1), (room28, exit_dir2),
+              (room38, exit_dir3), (room48, exit_dir4)]
+waits = [wait1, wait2, wait3, wait4]
 current_room = room11
 
 
@@ -152,7 +149,6 @@ def brief_look():
 @when('look')
 def look():
     print(current_room.desc)
-    print('')
 
 
 @when('bag')
