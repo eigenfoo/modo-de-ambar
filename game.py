@@ -16,11 +16,11 @@ possible_dungeons = [dungeon01, dungeon02, dungeon03, dungeon04]
 
 
 room11, room12, room13, room14, room15, room16, room17, room18, \
-    wait1, exit_dir1 = dungeon01()
+    wait1, exit_dir1 = dungeon03()
 room21, room22, room23, room24, room25, room26, room27, room28, \
     wait2, exit_dir2 = dungeon02()
 room31, room32, room33, room34, room35, room36, room37, room38, \
-    wait3, exit_dir3 = dungeon03()
+    wait3, exit_dir3 = dungeon01()
 room41, room42, room43, room44, room45, room46, room47, room48, \
     wait4, exit_dir4 = dungeon04()
 
@@ -55,7 +55,10 @@ def go(direction):
                 print('You may only take two items with you!')
                 return
 
-            subprocesses['generate'] = subprocess.Popen(['sh', 'call_generate.sh'],
+            subprocesses['generate'] = subprocess.Popen(['sh',
+                                                         'call_generate.sh',
+                                                         '40',
+                                                         '1500'],
                                                         stdin=subprocess.PIPE,
                                                         stdout=subprocess.PIPE,
                                                         stderr=open('mini_canne/nil.txt'),
@@ -83,7 +86,7 @@ def take(item):
 
     instrument = random.choice(['cello', 'guitar', 'didgeridoo', 'lyre'])
     subprocesses['train'] = subprocess.Popen(['sh', 'call_train.sh',
-                                              instrument, '1e-3', 'False', 'sc'],
+                                              'cello', '1e-3', 'False', 'sc'],
                                              stdin=subprocess.PIPE,
                                              stdout=subprocess.PIPE,
                                              stderr=open('mini_canne/nil.txt'),

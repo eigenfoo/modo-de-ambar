@@ -5,3 +5,4 @@ cd mini_canne/
 python train.py --corpus=lyre --learning_rate=1e-3 --new_init=True --loss_function=sc &
 sleep 10
 pkill python
+python generate.py
