@@ -1,13 +1,24 @@
 # ML Adventure
 
-To run:
+## Requirements
+
+- Python 3
+- [`sl`](https://github.com/mtoyoda/sl) package
+- `pgrep` UNIX utility
+
+## Setup
 
 ```
-$ python game.py
+git clone https://github.com/eigenfoo/ml-adventure.git
+cd ml-adventure/
+pip install -r requirements.txt
+cd mini_canne/corpora/
+./download_frames.sh
+cd ../../
 ```
 
-Python 3 required
+## Usage
 
-[`sl`](https://github.com/mtoyoda/sl) package required
-
-`requirements.txt` also required
+```
+python game.py
+```
