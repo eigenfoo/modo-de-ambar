@@ -249,7 +249,7 @@ def fishing_station():
     You both safely return to Anchorage.
     """
 
-    update = ('corpus', 'synth')
+    update = ('corpus', 'cello')
 
     return s1, s2, update
 

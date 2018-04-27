@@ -31,7 +31,7 @@ def dungeon01():
     room3 = room2.west = Room("""
     The hallway is dark.
     You turn on the lights, which throws amber light
-    on what would otherwise been bare white walls.
+    on what would otherwise be bare white walls.
     """)
     room3.desc = """
     You’ve always thought that the walls should be decorated.

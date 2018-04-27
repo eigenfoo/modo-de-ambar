@@ -151,9 +151,7 @@ def drop(thing):
 
 
 def brief_look():
-    for line in str(current_room).split('\n'):
-        say(line)
-        time.sleep(1)
+    say(current_room)
     print('')
 
     if current_room.items:

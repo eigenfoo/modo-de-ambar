@@ -32,12 +32,4 @@ else
     wget https://storage.googleapis.com/ml_adventure_frames/didgeridoo_frames.npy
 fi
 
-if ls synth_frames.npy > /dev/null 2>&1
-then
-    echo "synth_frames.npy found."
-else
-    echo "synth_frames.npy not found. Downloading..."
-    wget https://storage.googleapis.com/ml_adventure_frames/synth_frames.npy
-fi
-
 echo "Success."
