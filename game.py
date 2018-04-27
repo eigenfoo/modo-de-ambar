@@ -55,17 +55,16 @@ def go(direction):
                 print('You may only take two items with you!')
                 return
 
-            subprocess.call(['sh', 'kill_play.sh'])
             subprocess.call(['sh', 'kill_train.sh'])
 
-            subprocesses['generate'] = subprocess.Popen(['sh',
-                                                         'call_generate.sh',
-                                                         '40',
-                                                         '1500'],
-                                                        stdin=subprocess.PIPE,
-                                                        stdout=subprocess.PIPE,
-                                                        stderr=open('mini_canne/nil.txt'),
-                                                        close_fds=True)
+            subprocess.Popen(['sh',
+                              'call_generate.sh',
+                              '40',
+                              '1500'],
+                             stdin=subprocess.PIPE,
+                             stdout=subprocess.PIPE,
+                             stderr=open('mini_canne/nil.txt'),
+                             close_fds=True)
         else:
             say('You choose not to leave just yet.')
             return
@@ -86,12 +85,12 @@ def take(item):
     subprocess.call(['sh', 'kill_train.sh'])
 
     # instrument = random.choice(['cello', 'guitar', 'didgeridoo', 'lyre'])
-    subprocesses['train'] = subprocess.Popen(['sh', 'call_train.sh',
-                                              'didgeridoo', '1e-3', 'True', 'sc'],
-                                             stdin=subprocess.PIPE,
-                                             stdout=subprocess.PIPE,
-                                             stderr=open('mini_canne/nil.txt'),
-                                             close_fds=True)
+    subprocess.Popen(['sh', 'call_train.sh',
+                      'didgeridoo', '1e-3', 'True', 'sc'],
+                     stdin=subprocess.PIPE,
+                     stdout=subprocess.PIPE,
+                     stderr=open('mini_canne/nil.txt'),
+                     close_fds=True)
 
     obj = current_room.items.take(item)
     if obj:
@@ -173,15 +172,16 @@ def show_bag():
 @when('wait', context='wait')
 def wait():
     # FIXME note that sl is a requirement, but NOT a python requirement
+    subprocess.call(['sh', 'kill_play.sh'])
+
     for _ in range(3):
         subprocess.call(['sl'])
 
-    subprocess.call(['sh', 'kill_generate.sh'])
-    subprocesses['play'] = subprocess.Popen(['sh', 'call_play.sh'],
-                                            stdin=subprocess.PIPE,
-                                            stdout=subprocess.PIPE,
-                                            stderr=open('mini_canne/nil.txt'),
-                                            close_fds=True)
+    subprocess.Popen(['sh', 'call_play.sh'],
+                     stdin=subprocess.PIPE,
+                     stdout=subprocess.PIPE,
+                     stderr=open('mini_canne/nil.txt'),
+                     close_fds=True)
 
     global current_room
     if current_room == wait1:
@@ -201,21 +201,18 @@ def wait():
 
 
 if __name__ == '__main__':
-    subprocesses = {'play':     None,
-                    'train':    None,
-                    'generate': None}
     try:
-        subprocesses['play'] = subprocess.Popen(['sh', 'call_play.sh'],
-                                                stdin=subprocess.PIPE,
-                                                stdout=subprocess.PIPE,
-                                                stderr=open('mini_canne/nil.txt'),
-                                                close_fds=True)
-        subprocesses['train'] = subprocess.Popen(['sh', 'call_train.sh',
-                                                  'lyre', '1e-3', 'True', 'sc'],
-                                                 stdin=subprocess.PIPE,
-                                                 stdout=subprocess.PIPE,
-                                                 stderr=open('mini_canne/nil.txt'),
-                                                 close_fds=True)
+        subprocess.Popen(['sh', 'call_play.sh'],
+                         stdin=subprocess.PIPE,
+                         stdout=subprocess.PIPE,
+                         stderr=open('mini_canne/nil.txt'),
+                         close_fds=True)
+        subprocess.Popen(['sh', 'call_train.sh',
+                          'lyre', '1e-3', 'True', 'sc'],
+                         stdin=subprocess.PIPE,
+                         stdout=subprocess.PIPE,
+                         stderr=open('mini_canne/nil.txt'),
+                         close_fds=True)
 
         os.system('clear')
         brief_look()
