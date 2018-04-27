@@ -24,7 +24,7 @@ def dinner():
 
     s2 = ""
 
-    update = ('learning_rate', '1e-4')
+    update = ('learning_rate', '1e-5')
 
     return s1, s2, update
 
@@ -41,7 +41,7 @@ def photo():
 
     s2 = ""
 
-    update = ('LFO_Rate', '80')
+    update = ('LFO_Rate', '10')
 
     return s1, s2, update
 
@@ -90,7 +90,7 @@ def friend():
 
     s2 = " "
 
-    update = ('LFO_Rate', '20')
+    update = ('LFO_Rate', '80')
 
     return s1, s2, update
 
@@ -102,7 +102,7 @@ def shower():
 
     s2 = "You feel refreshed."
 
-    update = ('LFO_Rate', '10')
+    update = ('LFO_Rate', '40')
 
     return s1, s2, update
 
@@ -153,7 +153,7 @@ def toothpaste():
 
     s2 = ""
 
-    update = ('learning_rate', '1e-5')
+    update = ('learning_rate', '1e-6')
 
     return s1, s2, update
 
@@ -167,7 +167,7 @@ def sink():
 
     s2 = "You finish brushing your teeth."
 
-    update = ('LFO_Rate', '80')
+    update = ('LFO_Rate', '100')
 
     return s1, s2, update
 
@@ -280,7 +280,7 @@ def small_painting():
 
     s2 = ""
 
-    update = ('LFO_Rate', '20')
+    update = ('LFO_Rate', '200')
 
     return s1, s2, update
 

@@ -5,13 +5,16 @@ from adventurelib import (when, start, Room, Item, Bag,
 def dungeon01():
     room1 = Room("You enter your home.")
     room1.desc = """
-    Going abroad for college, you don’t really get to go home much.
-    Most of your friends take a two or three hour train ride back to home,
+    Going abroad for college, you don’t really get
+    to go home a lot.
+    Most of your friends take a two or three hour train ride back home,
     but it’s a 16 hour flight for you.
 
-    You’ve spent 18 years of your life in this home of homes, and one day
-    you packed your life into a suitcase and left. That’s how you left home,
-    and that’s how you come back to it: with a suitcase.
+    You’ve spent 18 years of your life in between these four walls,
+    and one day you packed your life into a suitcase and left.
+    That’s how you left home,
+    and that’s how you come back to it:
+    with a suitcase.
     """
 
     room2 = room1.west = Room("""
@@ -54,7 +57,7 @@ def dungeon01():
     """)
     room7.desc = """
     It’s dark and cold.
-    The lights are off, and your dad never turns off the air conditioning.
+    The lights are off, and nobody never turns off the air conditioning here.
     The imperturbable blue light in corner of the ceiling stares back at you,
     as it continues to blow cold air into the room.
     """
@@ -77,10 +80,12 @@ def dungeon01():
     """)
     room5.desc = """
     It’s your room.
-    You can navigate even though its black as death.
-    It’s pretty simple to navigate though,
-    your dad made sure the bookshelf was placed in a way
-    to make sure you wouldn’t accidentally hurt yourself.
+    You can navigate it even though its pitch black.
+
+    You still remember how your dad thought that
+    the bookshelf was too deep,
+    leaving you no space to play.
+    So he sheared one and a half inches off the entire face of the bookshelf.
     """
 
     music_box = Item('music box')
@@ -117,8 +122,9 @@ def dungeon02():
     The boat is shaking quite vigorously.
     """)
     room1.desc = """
-    You hope the dramamine that you took last night will help fight off the 
-    motion sickness. Your friend and his mom are also on the boat.
+    You hope the dramamine that you took last night
+    will help fight off the motion sickness.
+    Your friend and his mom are also on the boat.
     The captain is mumbling something incomprehensible in the corner.
     """
 
@@ -133,7 +139,7 @@ def dungeon02():
     room2.items = Bag({rope, backpack})
 
     room3 = room2.south = Room("""
-    The captain is demoing how to catch flounder.
+    The captain is demonstrating how to catch flounder.
     """)
     room3.desc = """
     The fishing line takes 5 minutes to reach the bottom of these open waters.
@@ -169,7 +175,8 @@ def dungeon02():
     The boat’s name is Big Thunder.
     """)
     room7.desc = """
-    You wonder who came up with that stupid sounding name.
+    You wonder who came up
+    with such a stupid sounding name.
     """
     fishing_rod = Item('fishing rod')
     room7.items = Bag({fishing_rod})

@@ -1,6 +1,7 @@
 import os
 import sys
 import subprocess
+import time
 from dungeons import dungeon01, dungeon02, dungeon03, dungeon04
 import interactions
 from adventurelib import (when, start, Room, Item, Bag,
@@ -63,7 +64,7 @@ def go(direction):
 
             subprocess.Popen(['sh',
                               'call_generate.sh',
-                              '40',
+                              current_settings['LFO_Rate'][0],
                               '1500'],
                              stdin=subprocess.PIPE,
                              stdout=subprocess.PIPE,
@@ -91,22 +92,24 @@ def take(item):
         if obj.name in interactions.items:
             i = interactions.items.index(obj.name)
             s1, s2, update = interactions.helper_funcs[i]()
-            current_settings[update[0]].append(update[1])
+            current_settings[update[0]].insert(0, update[1])
 
             subprocess.call(['sh', 'kill_train.sh'])
             subprocess.Popen(['sh', 'call_train.sh',
-                              current_settings['corpus'][-1],
-                              current_settings['learning_rate'][-1],
+                              current_settings['corpus'][0],
+                              current_settings['learning_rate'][0],
                               'False',
-                              current_settings['loss_function'][-1]],
+                              current_settings['loss_function'][0]],
                              stdin=subprocess.PIPE,
                              stdout=subprocess.PIPE,
                              stderr=open('mini_canne/nil.txt'),
                              close_fds=True)
 
-            print('{}'.format(s1))
+            for line in s1.split('\n'):
+                print('{}'.format(line))
+                time.sleep(2)
+
             if s2:
-                print('')
                 print('{}'.format(s2))
             else:
                 print('You pick up the {}.'.format(item))
@@ -125,14 +128,14 @@ def drop(thing):
     else:
         i = interactions.items.index(obj.name)
         _, _, update = interactions.helper_funcs[i]()
-        current_settings[update[0]].pop()
+        current_settings[update[0]].remove(update[1])
 
         subprocess.call(['sh', 'kill_train.sh'])
         subprocess.Popen(['sh', 'call_train.sh',
-                          current_settings['corpus'][-1],
-                          current_settings['learning_rate'][-1],
+                          current_settings['corpus'][0],
+                          current_settings['learning_rate'][0],
                           'False',
-                          current_settings['loss_function'][-1]],
+                          current_settings['loss_function'][0]],
                          stdin=subprocess.PIPE,
                          stdout=subprocess.PIPE,
                          stderr=open('mini_canne/nil.txt'),
@@ -148,7 +151,9 @@ def drop(thing):
 
 
 def brief_look():
-    say(current_room)
+    for line in str(current_room).split('\n'):
+        print(line)
+        time.sleep(1)
     print('')
 
     if current_room.items:
@@ -175,7 +180,9 @@ def brief_look():
 
 @when('look')
 def look():
-    print(current_room.desc)
+    for line in current_room.desc.split('\n'):
+        print(line)
+        time.sleep(2)
 
 
 @when('bag')
@@ -228,10 +235,10 @@ if __name__ == '__main__':
                          stderr=open('mini_canne/nil.txt'),
                          close_fds=True)
         subprocess.Popen(['sh', 'call_train.sh',
-                          current_settings['corpus'][-1],
-                          current_settings['learning_rate'][-1],
+                          current_settings['corpus'][0],
+                          current_settings['learning_rate'][0],
                           'False',
-                          current_settings['loss_function'][-1]],
+                          current_settings['loss_function'][0]],
                          stdin=subprocess.PIPE,
                          stdout=subprocess.PIPE,
                          stderr=open('mini_canne/nil.txt'),
