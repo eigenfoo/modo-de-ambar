@@ -152,7 +152,7 @@ def drop(thing):
 
 def brief_look():
     for line in str(current_room).split('\n'):
-        print(line)
+        say(line)
         time.sleep(1)
     print('')
 
@@ -181,8 +181,8 @@ def brief_look():
 @when('look')
 def look():
     for line in current_room.desc.split('\n'):
-        print(line)
-        time.sleep(2)
+        say(line)
+        time.sleep(1)
 
 
 @when('bag')
