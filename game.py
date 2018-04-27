@@ -16,11 +16,11 @@ bag = Bag([])
 possible_dungeons = [dungeon01, dungeon02, dungeon03, dungeon04]
 
 room11, room12, room13, room14, room15, room16, room17, room18, \
-    wait1, exit_dir1 = dungeon03()
+    wait1, exit_dir1 = dungeon01()
 room21, room22, room23, room24, room25, room26, room27, room28, \
     wait2, exit_dir2 = dungeon02()
 room31, room32, room33, room34, room35, room36, room37, room38, \
-    wait3, exit_dir3 = dungeon01()
+    wait3, exit_dir3 = dungeon03()
 room41, room42, room43, room44, room45, room46, room47, room48, \
     wait4, exit_dir4 = dungeon04()
 
