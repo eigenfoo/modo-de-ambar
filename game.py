@@ -60,10 +60,10 @@ def go(direction):
                 print('You may only take two items with you!')
                 return
 
-            subprocess.call(['sh', 'kill_train.sh'])
+            subprocess.call(['sh', 'shell_scripts/kill_train.sh'])
 
             subprocess.Popen(['sh',
-                              'call_generate.sh',
+                              'shell_scripts/call_generate.sh',
                               current_settings['LFO_Rate'][0],
                               '1500'],
                              stdin=subprocess.PIPE,
@@ -94,8 +94,8 @@ def take(item):
             s1, s2, update = interactions.helper_funcs[i]()
             current_settings[update[0]].insert(0, update[1])
 
-            subprocess.call(['sh', 'kill_train.sh'])
-            subprocess.Popen(['sh', 'call_train.sh',
+            subprocess.call(['sh', 'shell_scripts/kill_train.sh'])
+            subprocess.Popen(['sh', 'shell_scripts/call_train.sh',
                               current_settings['corpus'][0],
                               current_settings['learning_rate'][0],
                               'False',
@@ -130,8 +130,8 @@ def drop(thing):
         _, _, update = interactions.helper_funcs[i]()
         current_settings[update[0]].remove(update[1])
 
-        subprocess.call(['sh', 'kill_train.sh'])
-        subprocess.Popen(['sh', 'call_train.sh',
+        subprocess.call(['sh', 'shell_scripts/kill_train.sh'])
+        subprocess.Popen(['sh', 'shell_scripts/call_train.sh',
                           current_settings['corpus'][0],
                           current_settings['learning_rate'][0],
                           'False',
@@ -199,12 +199,12 @@ def show_bag():
 @when('wait', context='wait')
 def wait():
     # FIXME note that sl is a requirement, but NOT a python requirement
-    subprocess.call(['sh', 'kill_play.sh'])
+    subprocess.call(['sh', 'shell_scripts/kill_play.sh'])
 
     for _ in range(3):
         subprocess.call(['sl'])
 
-    subprocess.Popen(['sh', 'call_play.sh'],
+    subprocess.Popen(['sh', 'shell_scripts/call_play.sh'],
                      stdin=subprocess.PIPE,
                      stdout=subprocess.PIPE,
                      stderr=open('mini_canne/nil.txt'),
@@ -229,12 +229,12 @@ def wait():
 
 if __name__ == '__main__':
     try:
-        subprocess.Popen(['sh', 'call_play.sh'],
+        subprocess.Popen(['sh', 'shell_scripts/call_play.sh'],
                          stdin=subprocess.PIPE,
                          stdout=subprocess.PIPE,
                          stderr=open('mini_canne/nil.txt'),
                          close_fds=True)
-        subprocess.Popen(['sh', 'call_train.sh',
+        subprocess.Popen(['sh', 'shell_scripts/call_train.sh',
                           current_settings['corpus'][0],
                           current_settings['learning_rate'][0],
                           'False',
@@ -250,6 +250,6 @@ if __name__ == '__main__':
         start()
     finally:
         # Kill all python processes to stop play, train and generate
-        subprocess.call(['sh', 'kill_play.sh'])
-        subprocess.call(['sh', 'kill_train.sh'])
-        subprocess.call(['sh', 'kill_generate.sh'])
+        subprocess.call(['sh', 'shell_scripts/kill_play.sh'])
+        subprocess.call(['sh', 'shell_scripts/kill_train.sh'])
+        subprocess.call(['sh', 'shell_scripts/kill_generate.sh'])
