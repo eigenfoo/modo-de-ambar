@@ -10,7 +10,9 @@ def dad():
 
     s2 = " "
 
-    return s1, s2
+    update = ('corpus', 'didgeridoo')
+
+    return s1, s2, update
 
 
 def dinner():
@@ -22,7 +24,9 @@ def dinner():
 
     s2 = ""
 
-    return s1, s2
+    update = ('learning_rate', '1e-4')
+
+    return s1, s2, update
 
 
 def photo():
@@ -37,7 +41,9 @@ def photo():
 
     s2 = ""
 
-    return s1, s2
+    update = ('LFO_Rate', '80')
+
+    return s1, s2, update
 
 
 def music_box():
@@ -54,7 +60,9 @@ def music_box():
 
     s2 = ""
 
-    return s1, s2
+    update = ('corpus', 'lyre')
+
+    return s1, s2, update
 
 
 def phone():
@@ -69,7 +77,9 @@ def phone():
 
     s2 = ""
 
-    return s1, s2
+    update = ('corpus', 'guitar')
+
+    return s1, s2, update
 
 
 def friend():
@@ -80,7 +90,9 @@ def friend():
 
     s2 = " "
 
-    return s1, s2
+    update = ('LFO_Rate', '20')
+
+    return s1, s2, update
 
 
 def shower():
@@ -90,7 +102,9 @@ def shower():
 
     s2 = "You feel refreshed."
 
-    return s1, s2
+    update = ('LFO_Rate', '10')
+
+    return s1, s2, update
 
 
 def towel():
@@ -101,7 +115,9 @@ def towel():
 
     s2 = ""
 
-    return s1, s2
+    update = ('loss_function', 'mae')
+
+    return s1, s2, update
 
 
 def soap():
@@ -113,7 +129,9 @@ def soap():
 
     s2 = ""
 
-    return s1, s2
+    update = ('learning_rate', '1e-4')
+
+    return s1, s2, update
 
 
 def toothbrush():
@@ -123,7 +141,9 @@ def toothbrush():
 
     s2 = ""
 
-    return s1, s2
+    update = ('loss_function', 'mse')
+
+    return s1, s2, update
 
 
 def toothpaste():
@@ -133,7 +153,9 @@ def toothpaste():
 
     s2 = ""
 
-    return s1, s2
+    update = ('learning_rate', '1e-5')
+
+    return s1, s2, update
 
 
 def sink():
@@ -145,7 +167,9 @@ def sink():
 
     s2 = "You finish brushing your teeth."
 
-    return s1, s2
+    update = ('LFO_Rate', '80')
+
+    return s1, s2, update
 
 
 def shoes():
@@ -155,7 +179,9 @@ def shoes():
 
     s2 = ""
 
-    return s1, s2
+    update = ('LFO_Rate', '40')
+
+    return s1, s2, update
 
 
 def rope():
@@ -165,7 +191,9 @@ def rope():
 
     s2 = ""
 
-    return s1, s2
+    update = ('loss_function', 'sc')
+
+    return s1, s2, update
 
 
 def backpack():
@@ -175,7 +203,9 @@ def backpack():
 
     s2 = ""
 
-    return s1, s2
+    update = ('corpus', 'cello')
+
+    return s1, s2, update
 
 
 def anchor():
@@ -186,7 +216,9 @@ def anchor():
 
     s2 = ""
 
-    return s1, s2
+    update = ('learning_rate', '1e-3')
+
+    return s1, s2, update
 
 
 def fishing_rod():
@@ -198,7 +230,9 @@ def fishing_rod():
 
     s2 = ""
 
-    return s1, s2
+    update = ('loss_function', 'mse')
+
+    return s1, s2, update
 
 
 def fishing_station():
@@ -215,7 +249,9 @@ def fishing_station():
     You both safely return to Anchorage.
     """
 
-    return s1, s2
+    update = ('corpus', 'guitar')
+
+    return s1, s2, update
 
 
 def pen():
@@ -229,7 +265,9 @@ def pen():
 
     s2 = ""
 
-    return s1, s2
+    update = ('corpus', 'didgeridoo')
+
+    return s1, s2, update
 
 
 def small_painting():
@@ -242,7 +280,9 @@ def small_painting():
 
     s2 = ""
 
-    return s1, s2
+    update = ('LFO_Rate', '20')
+
+    return s1, s2, update
 
 
 items = \

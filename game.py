@@ -26,7 +26,12 @@ room41, room42, room43, room44, room45, room46, room47, room48, \
 last_rooms = [(room18, exit_dir1), (room28, exit_dir2),
               (room38, exit_dir3), (room48, exit_dir4)]
 waits = [wait1, wait2, wait3, wait4]
+
 current_room = room11
+current_settings = {'corpus': ['lyre'],
+                    'learning_rate': ['1e-3'],
+                    'loss_function': ['sc'],
+                    'LFO_Rate': ['40']}
 
 
 @when('forward', direction='north')
@@ -81,20 +86,24 @@ def go(direction):
 
 @when('take ITEM')
 def take(item):
-    subprocess.call(['sh', 'kill_train.sh'])
-
-    subprocess.Popen(['sh', 'call_train.sh',
-                      'didgeridoo', '1e-3', 'True', 'sc'],
-                     stdin=subprocess.PIPE,
-                     stdout=subprocess.PIPE,
-                     stderr=open('mini_canne/nil.txt'),
-                     close_fds=True)
-
     obj = current_room.items.take(item)
     if obj:
         if obj.name in interactions.items:
             i = interactions.items.index(obj.name)
-            s1, s2 = interactions.helper_funcs[i]()
+            s1, s2, update = interactions.helper_funcs[i]()
+            current_settings[update[0]].append(update[1])
+
+            subprocess.call(['sh', 'kill_train.sh'])
+            subprocess.Popen(['sh', 'call_train.sh',
+                              current_settings['corpus'][-1],
+                              current_settings['learning_rate'][-1],
+                              'False',
+                              current_settings['loss_function'][-1]],
+                             stdin=subprocess.PIPE,
+                             stdout=subprocess.PIPE,
+                             stderr=open('mini_canne/nil.txt'),
+                             close_fds=True)
+
             print('{}'.format(s1))
             if s2:
                 print('')
@@ -114,7 +123,20 @@ def drop(thing):
     if not obj:
         say('You do not have a {}.'.format(thing))
     else:
-        # FIXME change training here!
+        i = interactions.items.index(obj.name)
+        _, _, update = interactions.helper_funcs[i]()
+        current_settings[update[0]].pop()
+
+        subprocess.call(['sh', 'kill_train.sh'])
+        subprocess.Popen(['sh', 'call_train.sh',
+                          current_settings['corpus'][-1],
+                          current_settings['learning_rate'][-1],
+                          'False',
+                          current_settings['loss_function'][-1]],
+                         stdin=subprocess.PIPE,
+                         stdout=subprocess.PIPE,
+                         stderr=open('mini_canne/nil.txt'),
+                         close_fds=True)
         if obj.name == 'dinner':
             say("""
             You drop the dinner plates off on the dining table.
@@ -206,7 +228,10 @@ if __name__ == '__main__':
                          stderr=open('mini_canne/nil.txt'),
                          close_fds=True)
         subprocess.Popen(['sh', 'call_train.sh',
-                          'lyre', '1e-3', 'True', 'sc'],
+                          current_settings['corpus'][-1],
+                          current_settings['learning_rate'][-1],
+                          'False',
+                          current_settings['loss_function'][-1]],
                          stdin=subprocess.PIPE,
                          stdout=subprocess.PIPE,
                          stderr=open('mini_canne/nil.txt'),
