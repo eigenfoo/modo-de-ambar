@@ -7,6 +7,7 @@ import interactions
 from adventurelib import (when, start, Room, Item, Bag,
                           say, set_context, get_context)
 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 Room.items = Bag()
 
@@ -54,8 +55,8 @@ def go(direction):
                 print('You may only take two items with you!')
                 return
 
-            subprocesses['play'].kill()
-            subprocesses['play'].terminate()
+            subprocess.call(['sh', 'kill_play.sh'])
+            subprocess.call(['sh', 'kill_train.sh'])
 
             subprocesses['generate'] = subprocess.Popen(['sh',
                                                          'call_generate.sh',
@@ -82,12 +83,11 @@ def go(direction):
 
 @when('take ITEM')
 def take(item):
-    subprocesses['train'].kill()
-    subprocesses['train'].terminate()
+    subprocess.call(['sh', 'kill_train.sh'])
 
     # instrument = random.choice(['cello', 'guitar', 'didgeridoo', 'lyre'])
     subprocesses['train'] = subprocess.Popen(['sh', 'call_train.sh',
-                                              'cello', '1e-3', 'False', 'sc'],
+                                              'didgeridoo', '1e-3', 'True', 'sc'],
                                              stdin=subprocess.PIPE,
                                              stdout=subprocess.PIPE,
                                              stderr=open('mini_canne/nil.txt'),
@@ -176,8 +176,12 @@ def wait():
     for _ in range(3):
         subprocess.call(['sl'])
 
-    subprocesses['generate'].kill()
-    subprocesses['generate'].terminate()
+    subprocess.call(['sh', 'kill_generate.sh'])
+    subprocesses['play'] = subprocess.Popen(['sh', 'call_play.sh'],
+                                            stdin=subprocess.PIPE,
+                                            stdout=subprocess.PIPE,
+                                            stderr=open('mini_canne/nil.txt'),
+                                            close_fds=True)
 
     global current_room
     if current_room == wait1:
@@ -207,7 +211,7 @@ if __name__ == '__main__':
                                                 stderr=open('mini_canne/nil.txt'),
                                                 close_fds=True)
         subprocesses['train'] = subprocess.Popen(['sh', 'call_train.sh',
-                                                  'lyre', '1e-3', 'False', 'sc'],
+                                                  'lyre', '1e-3', 'True', 'sc'],
                                                  stdin=subprocess.PIPE,
                                                  stdout=subprocess.PIPE,
                                                  stderr=open('mini_canne/nil.txt'),
@@ -219,4 +223,6 @@ if __name__ == '__main__':
         start()
     finally:
         # Kill all python processes to stop play, train and generate
-        subprocess.call(['pkill', '-9', 'python'])
+        subprocess.call(['sh', 'kill_play.sh'])
+        subprocess.call(['sh', 'kill_train.sh'])
+        subprocess.call(['sh', 'kill_generate.sh'])

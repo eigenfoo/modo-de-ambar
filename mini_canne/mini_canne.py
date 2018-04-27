@@ -8,7 +8,6 @@ import librosa
 import scipy as sci
 import soundfile as sf
 from time import time
-from tqdm import tqdm
 
 
 def do_rtpghi_gaussian_window(mag, len_window, hop_length_):
@@ -228,7 +227,7 @@ class ANNeSynth:
         # Trains the neural net for the number of epochs specified above
         # Prints test accuracy every 10th epoch
         text_file = open("metrics.txt", "a")
-        for i in tqdm(range(self.topology.epochs)):
+        for i in range(self.topology.epochs):
             # permuting the training data between epochs improves ADAM's
             # performance
             frames = np.random.permutation(train)
