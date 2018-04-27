@@ -1,7 +1,6 @@
 import os
 import sys
 import subprocess
-import random
 from dungeons import dungeon01, dungeon02, dungeon03, dungeon04
 import interactions
 from adventurelib import (when, start, Room, Item, Bag,
@@ -84,7 +83,6 @@ def go(direction):
 def take(item):
     subprocess.call(['sh', 'kill_train.sh'])
 
-    # instrument = random.choice(['cello', 'guitar', 'didgeridoo', 'lyre'])
     subprocess.Popen(['sh', 'call_train.sh',
                       'didgeridoo', '1e-3', 'True', 'sc'],
                      stdin=subprocess.PIPE,
