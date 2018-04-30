@@ -211,17 +211,9 @@ def ascii_loading_screen():
 @when('wait', context='wait')
 def wait():
     # FIXME note that sl is a requirement, but NOT a python requirement
-    subprocess.call(['sh', 'shell_scripts/kill_play.sh'])
-
     for _ in range(1):
         #subprocess.call(['sl'])
         ascii_loading_screen()
-
-    subprocess.Popen(['sh', 'shell_scripts/call_play.sh'],
-                     stdin=subprocess.PIPE,
-                     stdout=subprocess.PIPE,
-                     stderr=open('mini_canne/nil.txt'),
-                     close_fds=True)
 
     global current_room
     if current_room == wait1:
