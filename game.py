@@ -197,22 +197,22 @@ def show_bag():
 
 
 def ascii_loading_screen():
-  os.system('clear')
-  screen = aalib.AsciiScreen(width=125, height=70)
-  for jj in range(1):
-    for ii in range(252):
-      filename = 'anim1/anim'+str(ii).zfill(4)+'.jpg'
-      image = Image.open(filename).convert('L').resize((screen.virtual_size))
-      screen.put_image((0,0), image)
-      print(screen.render())
-  os.system('clear')
+    os.system('clear')
+    screen = aalib.AsciiScreen(width=125, height=70)
+    for jj in range(1):
+        for ii in range(252):
+            filename = 'anim1/anim'+str(ii).zfill(4)+'.jpg'
+            image = Image.open(filename).convert('L').resize((screen.virtual_size))
+            screen.put_image((0, 0), image)
+            print(screen.render())
+    os.system('clear')
 
 
 @when('wait', context='wait')
 def wait():
     # FIXME note that sl is a requirement, but NOT a python requirement
     for _ in range(1):
-        #subprocess.call(['sl'])
+        # subprocess.call(['sl'])
         ascii_loading_screen()
 
     global current_room
