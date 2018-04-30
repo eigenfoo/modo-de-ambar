@@ -2,6 +2,8 @@ import os
 import sys
 import subprocess
 import time
+import aalib
+from PIL import Image
 from dungeons import dungeon01, dungeon02, dungeon03, dungeon04
 import interactions
 from adventurelib import (when, start, Room, Item, Bag,
@@ -193,14 +195,25 @@ def show_bag():
     else:
         say('Your bag is empty!')
 
-
+def ascii_loading_screen():
+  os.system('clear')
+  screen = aalib.AsciiScreen(width=125, height=70)
+  for jj in range(1):
+    for ii in range(252):
+      filename = 'anim1/anim'+str(ii).zfill(4)+'.jpg'
+      image = Image.open(filename).convert('L').resize((screen.virtual_size))
+      screen.put_image((0,0), image)
+      print(screen.render())
+  os.system('clear')
+        
 @when('wait', context='wait')
 def wait():
     # FIXME note that sl is a requirement, but NOT a python requirement
     subprocess.call(['sh', 'shell_scripts/kill_play.sh'])
 
-    for _ in range(3):
-        subprocess.call(['sl'])
+    for _ in range(1):
+        #subprocess.call(['sl'])
+        ascii_loading_screen()
 
     subprocess.Popen(['sh', 'shell_scripts/call_play.sh'],
                      stdin=subprocess.PIPE,
