@@ -195,6 +195,7 @@ def show_bag():
     else:
         say('Your bag is empty!')
 
+
 def ascii_loading_screen():
   os.system('clear')
   screen = aalib.AsciiScreen(width=125, height=70)
@@ -205,7 +206,8 @@ def ascii_loading_screen():
       screen.put_image((0,0), image)
       print(screen.render())
   os.system('clear')
-        
+
+
 @when('wait', context='wait')
 def wait():
     # FIXME note that sl is a requirement, but NOT a python requirement
