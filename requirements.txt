@@ -3,3 +3,5 @@ tensorflow==1.7.0
 librosa==0.6.0
 SoundFile==0.10.2
 pygame==1.9.3
+python-aalib==0.3.2
+image==1.5.20
