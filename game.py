@@ -35,10 +35,6 @@ current_settings = {'corpus': ['lyre'],
                     'LFO_Rate': ['40']}
 
 
-@when('forward', direction='north')
-@when('back', direction='south')
-@when('left', direction='east')
-@when('right', direction='west')
 @when('north', direction='north')
 @when('south', direction='south')
 @when('east', direction='east')
