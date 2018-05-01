@@ -1,7 +1,8 @@
 # Project-specific #
 ####################
 # don't commit model checkpoints, .npy frames or metrics log file
-checkpoints/
+mini_canne/checkpoints/checkpoint
+mini_canne/checkpoints/my-model*
 *.npy
 metrics.txt
 

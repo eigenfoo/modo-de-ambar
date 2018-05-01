@@ -3,7 +3,6 @@
 ## Requirements
 
 - Python 3
-- [`sl`](https://github.com/mtoyoda/sl) package
 - `pgrep` UNIX utility
 
 ## Setup
