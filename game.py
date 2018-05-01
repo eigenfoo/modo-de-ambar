@@ -66,6 +66,24 @@ def go(direction):
                              stdout=subprocess.PIPE,
                              stderr=open('mini_canne/nil.txt'),
                              close_fds=True)
+
+            if current_room == room18:
+                current_room = room21
+            elif current_room == room28:
+                current_room = room31
+            elif current_room == room38:
+                current_room = room41
+            elif current_room == room48:
+                current_room = room11
+
+            ascii_loading_screen()
+
+            subprocess.call(['clear'])
+            say('You find yourself someplace else.')
+            print('')
+            brief_look()
+            set_context('default')
+            return
         else:
             say('You choose not to leave just yet.')
             return
