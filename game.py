@@ -218,30 +218,6 @@ def ascii_loading_screen():
     os.system('clear')
 
 
-@when('wait', context='wait')
-def wait():
-    # FIXME note that sl is a requirement, but NOT a python requirement
-    for _ in range(1):
-        # subprocess.call(['sl'])
-        ascii_loading_screen()
-
-    global current_room
-    if current_room == wait1:
-        current_room = room21
-    elif current_room == wait2:
-        current_room = room31
-    elif current_room == wait3:
-        current_room = room41
-    elif current_room == wait4:
-        current_room = room11
-
-    subprocess.call(['clear'])
-    say('You find yourself someplace else.')
-    print('')
-    brief_look()
-    set_context('default')
-
-
 if __name__ == '__main__':
     try:
         subprocess.Popen(['sh', 'shell_scripts/call_play.sh'],
