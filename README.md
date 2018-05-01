@@ -1,5 +1,7 @@
 # ML Adventure
 
+A text-based adventure game that uses a neural network to generate audio!
+
 ## Requirements
 
 - Python 3
