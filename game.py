@@ -2,8 +2,6 @@ import os
 import sys
 import subprocess
 import time
-import aalib
-from PIL import Image
 from dungeons import dungeon01, dungeon02, dungeon03, dungeon04
 import interactions
 from adventurelib import (when, start, Room, Item, Bag,
@@ -198,13 +196,11 @@ def show_bag():
 
 def ascii_loading_screen():
     os.system('clear')
-    screen = aalib.AsciiScreen(width=125, height=70)
-    for jj in range(1):
-        for ii in range(252):
-            filename = 'anim1/anim'+str(ii).zfill(4)+'.jpg'
-            image = Image.open(filename).convert('L').resize((screen.virtual_size))
-            screen.put_image((0, 0), image)
-            print(screen.render())
+    for i in range(252):
+        with open('ascii_animation/anim' + str(i).zfill(3) + '.txt') as f:
+            s = f.read()
+            print(s)
+            time.sleep(0.1)
     os.system('clear')
 
 
