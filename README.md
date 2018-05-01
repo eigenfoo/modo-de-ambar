@@ -23,3 +23,10 @@ cd ../../
 ```
 python game.py
 ```
+
+## License
+
+`adventurelib` is made available by Daniel Pope through the MIT License
+[here](https://github.com/lordmauve/adventurelib).
+
+The remainder of this software is released under the Apache License 2.0.
