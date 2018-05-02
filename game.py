@@ -226,8 +226,8 @@ def show_bag():
 @when('quit')
 def quit():
     msgs = ["Where do you think you're going?",
-            "¿A dónde vas?",
-            "`quit` has been deprecated and removed from v0.1",
+            "¿Adónde vas?",
+            "``quit`` has been deprecated and removed from v0.1",
             "Please don't.",
             "You're not going anywhere."]
 
