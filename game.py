@@ -223,11 +223,11 @@ def show_bag():
         say('Your bag is empty!')
 
 
-@when('quit')
-def quit():
+@when('exit')
+def exit():
     msgs = ["Where do you think you're going?",
             "¿Adónde vas?",
-            "The ``quit`` command has been deprecated and removed from v0.0",
+            "The ``exit`` command has been deprecated and removed from v0.0",
             "Please don't.",
             "You're not going anywhere."]
 
