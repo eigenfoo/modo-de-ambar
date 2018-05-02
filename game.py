@@ -1,11 +1,11 @@
 # Copyright 2018 Ella de Buck, Joseph Colonel, George Ho, Richard Yee
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,6 +16,7 @@ import os
 import sys
 import subprocess
 import time
+import random
 from dungeons import dungeon01, dungeon02, dungeon03, dungeon04
 import interactions
 from adventurelib import (when, start, Room, Item, Bag,
@@ -220,6 +221,17 @@ def show_bag():
             say(thing)
     else:
         say('Your bag is empty!')
+
+
+@when('quit')
+def quit():
+    msgs = ["Where do you think you're going?",
+            "¿A dónde vas?",
+            "`quit` has been deprecated and removed from v0.1",
+            "Please don't.",
+            "You're not going anywhere."]
+
+    print(random.choice(msgs))
 
 
 def ascii_loading_screen():
