@@ -63,7 +63,7 @@ def go(direction):
         return
 
     if (current_room, direction) in last_rooms:
-        say('You are about to leave this dungeon.')
+        say('You are about to leave this place.')
         ans = input("Are you sure? (yes/no) ")
         if ans == 'yes':
             if bag.num_items() > 2:
@@ -227,7 +227,7 @@ def show_bag():
 def quit():
     msgs = ["Where do you think you're going?",
             "¿Adónde vas?",
-            "``quit`` has been deprecated and removed from v0.1",
+            "The ``quit`` command has been deprecated and removed from v0.0",
             "Please don't.",
             "You're not going anywhere."]
 
