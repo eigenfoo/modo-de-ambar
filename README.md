@@ -1,4 +1,4 @@
-# ML Adventure
+# modo de ámbar
 
 A text-based adventure game that uses a neural network to generate audio!
 
